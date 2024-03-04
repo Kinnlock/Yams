@@ -5,19 +5,18 @@ export const gameApi = createApi({
     reducerPath: 'gameApi',
     // connexion à l'API url de base
     baseQuery: fetchBaseQuery({baseUrl : 'http://localhost:3001'}),
-    
     endpoints : (builder) => ({
         getPastries : builder.query({
-            query : () => `game/pastries`
+            query : () => 'game/pastries'
         }),
         getWin : builder.query({
-            query : (win) => `/game/win-pastries/:quantity`
-        })       
-        
+            query : (count) => `/game/win-pastries/${count}`
+        })
+
     })
 })
 
 // hook qui permet d'utiliser l'API de createApi
-export const { useGetPastriesQuery, useGetWinQuery } = gameApi 
+export const { useGetPastriesQuery, useGetWinQuery } = gameApi
 
 
