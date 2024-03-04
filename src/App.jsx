@@ -1,9 +1,9 @@
-import { useGetPastriesQuery } from './storage/game'
+import { useGetPastriesQuery, useGetWinQuery } from './storage/game'
 
 
 function App() {
-  const { data, error, isLoading } = useGetPastriesQuery();
-  const pastries = data
+  const { pastries, error, isLoading } = useGetPastriesQuery();
+  const { win, error:e, isLoading:i } = useGetWinQuery();
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -12,10 +12,10 @@ function App() {
   if (error) {
     return <div>Error: {error.message}</div>;
   }
-  if (data) {
+  if (pastries) {
     return (
       <>
-        {data.map((pastrie) => (
+        {pastries.map((pastrie) => (
           <p key={pastrie.id}>{pastrie.name}</p>
         ))}
       </>
