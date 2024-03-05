@@ -4,12 +4,13 @@ function App() {
   const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = useGetPastriesQuery();
 
   if (pastriesIsLoading) {
-    return <div>Loading pastries...</div>;
+    return <div>Chargement...</div>;
   }
 
   if (pastriesError) {
-    return <div>Error loading pastries: {pastriesError.message}</div>;
+    return <div>Erreur lors du chargement: {pastriesError.message}</div>;
   }
+result();
 
   if (pastries) {
     return (
@@ -20,9 +21,25 @@ function App() {
   }
 }
 
-//Faire une logique (lancer 5 fois dé et si y a des doubles ou trible alors on lance Game avec une prop 1 ou 2 qui serait le return de dé s'il y a respectivement un double ou un triple)
-function result(){
-
+function result() {
+  let resultats = [];
+  let gagner = 0;
+  
+  for (let i = 0; i < 5; i++) {
+    resultats.push(de());
+  }
+  
+  let copieResultat = [...resultats];
+  while (copieResultat.length > 0) {
+    let nombreATester = copieResultat.shift();
+    console.log(nombreATester);
+    if (copieResultat.includes(nombreATester)) {
+      gagner++;
+    }
+  }
+  resultats.push(gagner);
+  //Resultat est un tableau de 6. 0 à 4 correspondant au resultat du dé et 5 au nombre de patisserie gagné
+  return resultats;
 }
 
 //Le dé qui donne un resultat entre 1 et 6
