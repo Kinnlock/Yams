@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import Prize from './components/Prize';
+import { useGetPastriesQuery } from './storage/game';
 
 function App() {
   const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = useGetPastriesQuery();
+  const [resultat, setResultat] = useState([]); 
 
   if (pastriesIsLoading) {
     return <div>Chargement...</div>;
@@ -10,12 +13,24 @@ function App() {
   if (pastriesError) {
     return <div>Erreur lors du chargement: {pastriesError.message}</div>;
   }
-result();
 
   if (pastries) {
+    const handleClick = () => {
+      const newResultat = result(); 
+      setResultat(newResultat); 
+    };
+
     return (
       <>
-        <Prize />
+        <button onClick={handleClick}>Lancer le dé</button> {/* Appel de handleClick sur clic */}
+        <ul>
+          <li>{resultat[0]}</li>
+          <li>{resultat[1]}</li>
+          <li>{resultat[2]}</li>
+          <li>{resultat[3]}</li>
+          <li>{resultat[4]}</li>
+        </ul>
+        <Prize quantity={resultat[5]} />
       </>
     );
   }
@@ -32,7 +47,6 @@ function result() {
   let copieResultat = [...resultats];
   while (copieResultat.length > 0) {
     let nombreATester = copieResultat.shift();
-    console.log(nombreATester);
     if (copieResultat.includes(nombreATester)) {
       gagner++;
     }

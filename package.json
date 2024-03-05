@@ -11,11 +11,6 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-<<<<<<< HEAD
-=======
-    "dids": "^5.0.2",
-    "ethers": "^6.11.1",
->>>>>>> 6befcc6a7477ca82391e8d40cd17935f7f942f68
     "html-entities": "^2.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

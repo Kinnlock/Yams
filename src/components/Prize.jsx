@@ -13,7 +13,6 @@ function Prize({ quantity }) {
   }
 
   if (wins) {
-    console.log(wins);
     return (
       <>
         <h1>Bravo, vous avez gagné un(e) :</h1>
