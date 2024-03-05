@@ -5,7 +5,6 @@ export const gameApi = createApi({
     reducerPath: 'gameApi',
     // connexion à l'API url de base
     baseQuery: fetchBaseQuery({baseUrl : 'http://localhost:3001'}),
-
     endpoints : (builder) => ({
         getPastries : builder.query({
             query : () => 'game/pastries'
