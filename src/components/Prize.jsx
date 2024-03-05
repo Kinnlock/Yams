@@ -11,7 +11,7 @@ function Prize({ quantity }) {
   if (winError) {
     return <div>Error loading win: {winError.message}</div>;
   }
-
+  console.log(wins)
   if (wins) {
     return (
       <>
