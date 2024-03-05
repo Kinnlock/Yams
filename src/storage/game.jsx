@@ -11,12 +11,19 @@ export const gameApi = createApi({
         }),
         getWin : builder.query({
             query : (count) => `/game/win-pastries/${count}`
-        })
-
+        }),
+        getLogOut : builder.query({
+            query : () => `/logout`
+        }),
+        postLogin : builder.query({
+            query : (credentials) => ({
+                url: "/login",
+                method: "POST",
+                body: credentials,
+            })
+        }),
     })
 })
 
 // hook qui permet d'utiliser l'API de createApi
-export const { useGetPastriesQuery, useGetWinQuery } = gameApi
-
-
+export const { useGetPastriesQuery, useGetWinQuery, useGetLogOutQuery, usePostLoginQuery } = gameApi
