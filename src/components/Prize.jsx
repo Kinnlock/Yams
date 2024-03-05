@@ -24,7 +24,7 @@ function Prize({ quantity }) {
     );
   }
   else{
-    return <h1>Plus de patisserie disponnible</h1>
+    return <h1 className="title">Plus de patisserie disponnible</h1>
   }
 }
 
