@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Prize from './components/Prize';
 import { useGetPastriesQuery } from './storage/game';
+import Button from './components/Button';
+import './App.css';
 
 function App() {
   const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = useGetPastriesQuery();
@@ -22,14 +24,33 @@ function App() {
 
     return (
       <>
-        <button onClick={handleClick}>Lancer le dé</button> 
-        <ul>
-          <li>{resultat[0]}</li>
-          <li>{resultat[1]}</li>
-          <li>{resultat[2]}</li>
-          <li>{resultat[3]}</li>
-          <li>{resultat[4]}</li>
-        </ul>
+        <Button label = "Lancer le dé"
+                onClick={() => handleClick()}
+                width="150px"
+                height="40px"
+                color="antiquewhite"
+                backgroundColor="#052E33"
+                borderRadius="15px"
+                fontSize="1em"
+        />
+
+        <div className='dices-container'>
+          <div className='dices'>
+          {resultat[0]}
+          </div>
+          <div className='dices'>
+          {resultat[1]}
+          </div>
+          <div className='dices'>
+          {resultat[2]}
+          </div>
+          <div className='dices'>
+          {resultat[3]}
+          </div>
+          <div className='dices'>
+          {resultat[4]}
+          </div>
+        </div>
         
         {resultat[5] > 0 && <Prize quantity={resultat[5]} />} 
       </>

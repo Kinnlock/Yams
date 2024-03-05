@@ -1,0 +1,29 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.dices-container {
+    border: thick double #052E33;
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+    justify-content: center;
+    padding: 0.5rem;
+    gap: 0.5rem;
+}
+
+.dices {
+    border: solid 2px #052E33;
+    width: 50 px;
+    height: 50px;
+    flex-grow: 1;
+    text-align: center;
+    background-color: #1A5359;
+}
