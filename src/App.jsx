@@ -1,4 +1,4 @@
-import { useGetPastriesQuery, useGetWinQuery } from './storage/game';
+import Prize from './components/Prize';
 
 function App() {
   const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = useGetPastriesQuery();
@@ -14,7 +14,7 @@ function App() {
   if (pastries) {
     return (
       <>
-        <Game />
+        <Prize />
       </>
     );
   }
@@ -28,31 +28,6 @@ function result(){
 //Le dé qui donne un resultat entre 1 et 6
 function de(){
   return Math.floor(Math.random() * (6-1) + 1);
-}
-
-
-//A mettre dans un fichier component jsx à part /!\
-function Game() {
-  const { data: wins, error: winError, isLoading: winIsLoading } = useGetWinQuery(1);
-
-  if (winIsLoading) {
-    return <div>Loading win...</div>;
-  }
-
-  if (winError) {
-    return <div>Error loading win: {winError.message}</div>;
-  }
-  if(wins){
-    console.log(wins)
-    return (
-      <>
-        <h1>Bravo vous avez gagné un(e)</h1>
-        {wins.map((win) => (
-          <p key={win.id}>{win.name}</p>
-        ))}
-     </>
-    )
-  }
 }
 
 export default App;
