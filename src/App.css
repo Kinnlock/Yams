@@ -26,6 +26,7 @@ ul {
     flex-grow: 1;
     text-align: center;
     background-color: #1A5359;
+}
 
 .container {
     display: flex;
