@@ -45,7 +45,7 @@ function App() {
           </div>
           {(resultat[5] < 1 || resultat.length<1) && (
             <Button 
-              label="Lancer le dé"
+              label="Lancer les dés"
               onClick={() => handleClick()}
               width="150px"
               height="40px"
