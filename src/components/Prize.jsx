@@ -23,7 +23,11 @@ function Prize({ quantity }) {
     );
   }
   else{
+<<<<<<< HEAD
     return <h1 className="title">Plus de patisserie disponnible</h1>
+=======
+    return <h1 className="title">Plus de pâtisseries disponnibles</h1>
+>>>>>>> 50c5bdf5de5ecc4e2a3e982b77cd8519d1ecd5a4
   }
 }
 
