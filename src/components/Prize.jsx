@@ -15,7 +15,6 @@ function Prize({ quantity }) {
   if (wins.length>0) {
     return (
       <>
-        if
         <h1 className="title">Bravo, vous avez gagné un(e) :</h1>
         {[...wins].map((win) => (
           <p key={win.id} className="pastries-name">{win.name}</p>
@@ -24,7 +23,7 @@ function Prize({ quantity }) {
     );
   }
   else{
-    return <h1>Plus de patisserie disponnible</h1>
+    return <h1 className="title">Plus de patisserie disponnible</h1>
   }
 }
 
