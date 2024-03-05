@@ -53,6 +53,7 @@ function App() {
               backgroundColor="#052E33"
               borderRadius="15px"
               fontSize="1em"
+              margin="25px"
             />
           )}
         </div>
