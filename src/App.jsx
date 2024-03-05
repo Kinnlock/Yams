@@ -22,7 +22,7 @@ function App() {
 
     return (
       <>
-        <button onClick={handleClick}>Lancer le dé</button> {/* Appel de handleClick sur clic */}
+        <button onClick={handleClick}>Lancer le dé</button> 
         <ul>
           <li>{resultat[0]}</li>
           <li>{resultat[1]}</li>
@@ -30,7 +30,8 @@ function App() {
           <li>{resultat[3]}</li>
           <li>{resultat[4]}</li>
         </ul>
-        <Prize quantity={resultat[5]} />
+        
+        {resultat[5] > 0 && <Prize quantity={resultat[5]} />} 
       </>
     );
   }
