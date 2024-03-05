@@ -24,15 +24,7 @@ function App() {
 
     return (
       <>
-        <Button label = "Lancer le dé"
-                onClick={() => handleClick()}
-                width="150px"
-                height="40px"
-                color="antiquewhite"
-                backgroundColor="#052E33"
-                borderRadius="15px"
-                fontSize="1em"
-        />
+      <div className='container'>
 
         <div className='dices-container'>
           <div className='dices'>
@@ -51,6 +43,16 @@ function App() {
           {resultat[4]}
           </div>
         </div>
+        <Button label = "Lancer le dé"
+                onClick={() => handleClick()}
+                width="150px"
+                height="40px"
+                color="antiquewhite"
+                backgroundColor="#052E33"
+                borderRadius="15px"
+                fontSize="1em"
+        />
+      </div>
         
         {resultat[5] > 0 && <Prize quantity={resultat[5]} />} 
       </>
