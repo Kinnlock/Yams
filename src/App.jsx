@@ -24,32 +24,37 @@ function App() {
 
     return (
       <>
-        <Button label = "Lancer le dé"
-                onClick={() => handleClick()}
-                width="150px"
-                height="40px"
-                color="antiquewhite"
-                backgroundColor="#052E33"
-                borderRadius="15px"
-                fontSize="1em"
-        />
+        <div className='container'>
 
-        <div className='dices-container'>
-          <div className='dices'>
-          {resultat[0]}
+          <div className='dices-container'>
+            <div className='dices'>
+            {resultat[0]}
+            </div>
+            <div className='dices'>
+            {resultat[1]}
+            </div>
+            <div className='dices'>
+            {resultat[2]}
+            </div>
+            <div className='dices'>
+            {resultat[3]}
+            </div>
+            <div className='dices'>
+            {resultat[4]}
+            </div>
           </div>
-          <div className='dices'>
-          {resultat[1]}
-          </div>
-          <div className='dices'>
-          {resultat[2]}
-          </div>
-          <div className='dices'>
-          {resultat[3]}
-          </div>
-          <div className='dices'>
-          {resultat[4]}
-          </div>
+          {(resultat[5] === 0 || resultat.length<1) && (
+            <Button 
+              label="Lancer le dé"
+              onClick={() => handleClick()}
+              width="150px"
+              height="40px"
+              color="antiquewhite"
+              backgroundColor="#052E33"
+              borderRadius="15px"
+              fontSize="1em"
+            />
+          )}
         </div>
         
         {resultat[5] > 0 && <Prize quantity={resultat[5]} />} 

@@ -18,3 +18,5 @@ export const gameApi = createApi({
 
 // hook qui permet d'utiliser l'API de createApi
 export const { useGetPastriesQuery, useGetWinQuery } = gameApi
+
+
