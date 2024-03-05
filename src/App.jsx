@@ -43,7 +43,7 @@ function App() {
             {resultat[4]}
             </div>
           </div>
-          {(resultat[5] === 0 || resultat.length<1) && (
+          {(resultat[5] < 1 || resultat.length<1) && (
             <Button 
               label="Lancer le dé"
               onClick={() => handleClick()}
@@ -71,15 +71,22 @@ function result() {
     resultats.push(de());
   }
   
-  let copieResultat = [...resultats];
-  while (copieResultat.length > 0) {
-    let nombreATester = copieResultat.shift();
-    if (copieResultat.includes(nombreATester)) {
-      gagner++;
+  let counts = {}; 
+
+  resultats.forEach(nombre => {
+    counts[nombre] = (counts[nombre] || 0) + 1;
+  });
+
+
+  Object.values(counts).forEach(count => {
+    if (count === 3) {
+      gagner += 1; 
+    } else if (count === 4) {
+      gagner += 2; 
     }
-  }
+  });
+
   resultats.push(gagner);
-  //Resultat est un tableau de 6. 0 à 4 correspondant au resultat du dé et 5 au nombre de patisserie gagné
   return resultats;
 }
 

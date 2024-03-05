@@ -12,16 +12,19 @@ function Prize({ quantity }) {
   if (winError) {
     return <div>Error loading win: {winError.message}</div>;
   }
-  console.log(wins)
-  if (wins) {
+  if (wins.length>0) {
     return (
       <>
+        if
         <h1 className="title">Bravo, vous avez gagné un(e) :</h1>
         {[...wins].map((win) => (
           <p key={win.id} className="pastries-name">{win.name}</p>
         ))}
       </>
     );
+  }
+  else{
+    return <h1>Plus de patisserie disponnible</h1>
   }
 }
 
