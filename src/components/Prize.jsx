@@ -3,7 +3,7 @@ import React from "react";
 
 function Prize({ quantity }) {
   const { data: wins, error: winError, isLoading: winIsLoading } = useGetWinQuery(quantity);
-  
+
   if (winIsLoading) {
     return <div>Loading win...</div>;
   }
@@ -16,7 +16,7 @@ function Prize({ quantity }) {
     return (
       <>
         <h1>Bravo, vous avez gagné un(e) :</h1>
-        {wins.map((win) => (
+        {[...wins].map((win) => (
           <p key={win.id}>{win.name}</p>
         ))}
       </>
