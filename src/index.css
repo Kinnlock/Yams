@@ -5,7 +5,7 @@
   
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
+    background-color: #042326;
   
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -28,11 +28,15 @@
     place-items: center;
     min-width: 320px;
     min-height: 100vh;
+    /*background: radial-gradient(ellipse at center, #C7D9D9 0%, #85A6A6 30%, #1B5959 60%);*/
+    background: radial-gradient(ellipse at top, #1B5959, transparent),
+                radial-gradient(circle at bottom, #C7D9D9, transparent);
   }
   
   h1 {
     font-size: 3.2em;
     line-height: 1.1;
+    text-shadow: 1px 1px 2px #C7D9D9;
   }
   
   @media (prefers-color-scheme: light) {
@@ -46,4 +50,9 @@
     button {
       background-color: #f9f9f9;
     }
+  }
+
+  p {
+    font-weight : bold;
+    text-shadow: 1px 1px 2px  #C7D9D9;
   }
