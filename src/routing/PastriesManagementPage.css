@@ -29,10 +29,16 @@
 }
 
 .column-name {
-    color: #C7D9D9;
+    color: #85A6A6;
 }
 
 table {
+<<<<<<< HEAD
+    border-width: 2px;
+    border-style: solid;
+    border-image: linear-gradient(to top, #C7D9D9, #042326) 1;
+    width: 950px;
+=======
     border-top: 1px solid #C7D9D9;
     border-bottom: 1px solid #1B5959;
 }
@@ -47,11 +53,5 @@ table {
     margin:15px;
 
 
-}
-
-.deco-btn{
-    position: absolute;
-    z-index: 50;
-    top: 10%;
-    left: 10%;
+>>>>>>> 37d8e6ff9d8e33bf80b8d62c801b89ea3b3e9f45
 }

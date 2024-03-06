@@ -111,7 +111,7 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
                                 <td><Button onClick={() => handleModifications(pastrie)}
                                             label="Modifier"
                                             width="90px"
-                                            height="40px"
+                                            height="30px"
                                             color="antiquewhite"
                                             backgroundColor="#052E33"
                                             borderRadius="15px"
@@ -122,7 +122,7 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
                                 <td><Button onClick={() => deletePastry(pastrie.id)}
                                             label="Supprimer"
                                             width="90px"
-                                            height="40px"
+                                            height="30px"
                                             color="antiquewhite"
                                             backgroundColor="#A3241A"
                                             borderRadius="15px"
