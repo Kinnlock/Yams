@@ -31,14 +31,19 @@ const LoginPage = () => {
     }
   };
 
-  return (
-    <div className="LoginPage">
-      <h1>Login Page</h1>
-      <label htmlFor="email">Email</label>
-      <input id="email" type="email" onChange={handleChangeEmail}></input>
+    return (
+        <div className="login-page">
+            <h1 className="title">Login Page</h1>
 
-      <label htmlFor="password">Mot de passe</label>
-      <input id="password" type="password" onChange={handleChangePassword}></input>
+            <div className="input-container">
+                <label className="input-label" htmlFor="email">Email</label>
+                <input className="input" id="email" type="email" onChange={handleChangeEmail}></input>
+            </div>
+
+            <div className="input-container">
+                <label className="input-label" htmlFor="password">Mot de passe</label>
+                <input className="input" id="password" type="password" onChange={handleChangePassword}></input>
+            </div>
 
       {error && <p className="error">{error}</p>}
 
