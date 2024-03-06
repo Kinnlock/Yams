@@ -87,7 +87,7 @@ const PastriesManagementPage = () => {
     if (displayAdd === false) {
         return (
             <div className="PastriesManagementPage">
-                    <h1 className="title">Pastries Management</h1>
+                    <h1 className="title">Gestion du stock</h1>
                     <button className='ajout-btn btn' onClick={() => setDisplayAdd(!displayAdd)}>Ajouter une patisserie</button>
                     {error && <p className="error">An error occurred: {error.message}</p>}
 
@@ -169,7 +169,15 @@ const PastriesManagementPage = () => {
                             onChange={(e) => setNewPastry({ ...newPastry, image: e.target.value })}
                         ></input>
                     </div>
-                    <button onClick={handleSubmit}>Envoyer</button>
+                    <Button onClick={() => handleSubmit()}
+                            label="Envoyer"
+                            width="80px"
+                            height="30px"
+                            color="antiquewhite"
+                            backgroundColor="#052E33"
+                            borderRadius="15px"
+                            fontSize="0.8em"
+                            margin="15px"/>
                 </div>
             </div>
         );
