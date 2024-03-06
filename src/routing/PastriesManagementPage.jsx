@@ -1,37 +1,12 @@
-<<<<<<< HEAD
-import "./PastriesManagementPage.css"
-import { useGetAdminPastriesQuery } from "../storage/game"
-const PastriesManagementPage = () => {
-=======
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './PastriesManagementPage.css';
->>>>>>> 085ce97215107be974843cb53040e11706f7d6e3
 
 const PastriesManagementPage = () => {
     const [pastries, setPastries] = useState([]);
     const [error, setError] = useState(null);
     const [displayAdd, setDisplayAdd] = useState(false);
 
-<<<<<<< HEAD
-    if(pastriesError){
-        return(
-            <>
-                <p>{pastriesError}</p>
-            </>
-        )
-    }
-    if(pastriesIsLoading){
-        return(
-            <>
-                <p>Chargement</p>
-            </>
-        )
-    }
-    if(pastries){
-        return(
-            <>
-=======
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -50,7 +25,6 @@ const PastriesManagementPage = () => {
             <h1>Pastries Management</h1>
             <button className='ajout-btn' onClick={() => setDisplayAdd(!displayAdd)}>Ajouter une patisserie</button>
             {error && <p className="error">An error occurred: {error.message}</p>}
->>>>>>> 085ce97215107be974843cb53040e11706f7d6e3
                 <table>
                     <thead>
                         <tr>
@@ -61,16 +35,6 @@ const PastriesManagementPage = () => {
                         </tr>
                     </thead>
                     <tbody>
-<<<<<<< HEAD
-                        {pastries.map((pastrie)=>(
-                            <>
-                                <tr key={pastrie.id}>
-                                    <td>{pastrie.name}</td>
-                                </tr>
-                            </>
-                        )
-                        )}
-=======
                 {pastries.map(pastrie => (
                     <>
                     <tr key={pastrie.id}>
@@ -82,7 +46,6 @@ const PastriesManagementPage = () => {
                     </tr>
                     </>
                 ))}
->>>>>>> 085ce97215107be974843cb53040e11706f7d6e3
                     </tbody>
                 </table>
         </div>
