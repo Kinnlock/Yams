@@ -25,16 +25,22 @@ const LoginPage = () => {
 
     return (
         <div className="login-page">
-            <h1 className="title">Login Page</h1>
+            <h1 className="title">Gagnez des pâtisseries !</h1>
 
             <div className="input-container">
                 <label className="input-label" htmlFor="email">Email</label>
-                <input className="input" id="email" type="email" onChange={handleChangeEmail}></input>
+                <input className="input" 
+                       id="email" 
+                       type="email" 
+                       onChange={handleChangeEmail}></input>
             </div>
 
             <div className="input-container">
                 <label className="input-label" htmlFor="password">Mot de passe</label>
-                <input className="input" id="password" type="password" onChange={handleChangePassword}></input>
+                <input className="input" 
+                       id="password" 
+                       type="password" 
+                       onChange={handleChangePassword}></input>
             </div>
 
             <Button 
