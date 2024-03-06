@@ -32,12 +32,7 @@
     color: #C7D9D9;
 }
 
-table, th, td {
+table {
     border-top: 1px solid #C7D9D9;
-    border-bottom: 1px solid #C7D9D9;
-}
-
-th, td {
-    margin-left: 15px;
-    margin-right: 15px;
+    border-bottom: 1px solid #1B5959;
 }

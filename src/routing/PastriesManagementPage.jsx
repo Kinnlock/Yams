@@ -24,14 +24,6 @@ const PastriesManagementPage = () => {
             console.error('Error delete pastry:', error);
         }
 
-<<<<<<< HEAD
-    //useStatte pour la modification des inputs
-    const [pastryName, setPastryName] = useState("");
-    const [pastryQuantity, setPastryQuantity] = useState(0);
-    const [pastryImage, setPastryImage] = useState("");
-
-    const handleModifications = (pastry) => {
-=======
     }
     const handleSubmit = async () => {
         try {
@@ -54,7 +46,6 @@ const PastriesManagementPage = () => {
     };
 
     const handleModifications =  (pastry) => {
->>>>>>> b140a779f7e4eb47f4c6a07776551ca5eaee57e1
         setCurrentPastry(pastry);
         setDisplayAdd(!displayAdd);
     }
@@ -87,30 +78,6 @@ const PastriesManagementPage = () => {
                         </tr>
                     </thead>
                     <tbody>
-<<<<<<< HEAD
-                {pastries.map(pastrie => (
-                    <>
-                    <tr key={pastrie.id}>
-                        <td>{pastrie.name}</td>
-                        <td>{pastrie.quantity}</td>
-                        <td>{pastrie.quantityWon}</td>
-                        <td><Button onClick={() => handleModifications(pastrie)}
-                                label="Modifier"
-                                width="80px"
-                                height="25px"
-                                color="antiquewhite"
-                                backgroundColor="#052E33"
-                                borderRadius="15px"
-                                fontSize="0.8em"/> </td>
-                    </tr>
-                    </>
-                ))}
-                    </tbody>
-                </table>
-        </div>
-    );
-    else if(displayAdd===true && currentPastry == undefined){
-=======
                         {pastries.map(pastrie => (
                             <tr key={pastrie.id}>
                                 <td>{pastrie.name}</td>
@@ -118,24 +85,24 @@ const PastriesManagementPage = () => {
                                 <td>{pastrie.quantityWon}</td>
                                 <td><Button onClick={() => handleModifications(pastrie)}
                                             label="Modifier"
-                                            width="180px"
+                                            width="90px"
                                             height="40px"
                                             color="antiquewhite"
                                             backgroundColor="#052E33"
                                             borderRadius="15px"
-                                            fontSize="1em"
-                                            margin="25px"
+                                            fontSize="0.9em"
+                                            margin="15px"
                                     />
                                 </td>
                                 <td><Button onClick={() => deletePastry(pastrie.id)}
                                             label="Supprimer"
-                                            width="180px"
+                                            width="90px"
                                             height="40px"
                                             color="antiquewhite"
-                                            backgroundColor="red"
+                                            backgroundColor="#A3241A"
                                             borderRadius="15px"
-                                            fontSize="1em"
-                                            margin="25px"
+                                            fontSize="0.9em"
+                                            margin="15px"
                                     />
                                 </td>
                             </tr>
@@ -145,36 +112,12 @@ const PastriesManagementPage = () => {
             </div>
         );
     } else if (displayAdd === true && currentPastry === undefined) {
->>>>>>> b140a779f7e4eb47f4c6a07776551ca5eaee57e1
         return (
             <div className='add-pastries'>
                 <div className='inputs'>
                     <button className='ajout-btn' onClick={() => setDisplayAdd(!displayAdd)}>{displayAdd ? "Retour" : "Ajouter une patisserie"}</button>
                     <h1 >Ajouter une patisserie</h1>
                     <div className='input'>
-<<<<<<< HEAD
-                        <label htmlFor='name'>Nom</label>
-                        <input id='name' 
-                               type='text' 
-                               required
-                               value={pastryName}
-                               onChange={(e) => setPastryName(e.target.value)}></input>
-                    </div>
-                    <div className='input'>
-                       <label htmlFor='quantity'>Quantité</label>
-                       <input id='quantity' 
-                              type='number' 
-                              required
-                              value={pastryQuantity}
-                              onChange={(e) => setPastryQuantity(e.target.value)}></input>
-                    </div>
-                    <div className='input'>
-                        <label htmlFor='image'>URL de l'image</label>
-                        <input id='image' 
-                               type='text'
-                               value={pastryImage}
-                               onChange={(e) => setPastryImage(e.target.value)}></input>
-=======
                         <label htmlFor='pastryName'>Nom</label>
                         <input 
                             id='pastryName' 
@@ -202,7 +145,6 @@ const PastriesManagementPage = () => {
                             value={newPastry.image} 
                             onChange={(e) => setNewPastry({ ...newPastry, image: e.target.value })}
                         ></input>
->>>>>>> b140a779f7e4eb47f4c6a07776551ca5eaee57e1
                     </div>
                     <button onClick={handleSubmit}>Envoyer</button>
                 </div>
@@ -213,20 +155,15 @@ const PastriesManagementPage = () => {
         return (
             <div className='add-pastries'>
                 <div className='inputs'>
-<<<<<<< HEAD
-                <button className='ajout-btn' onClick={() => {setDisplayAdd(!displayAdd); setCurrentPastry(undefined)}}>{displayAdd ? "Retour" : "Ajouter une patisserie"}</button>
-                    <h1 className="title">Ajouter une patisserie</h1>
-=======
                     <button className='ajout-btn' onClick={() => {setDisplayAdd(!displayAdd); setCurrentPastry(undefined)}}>{displayAdd ? "Retour" : "Ajouter une patisserie"}</button>
                     <h1 >Modifier une patisserie</h1>
->>>>>>> b140a779f7e4eb47f4c6a07776551ca5eaee57e1
                     <div className='input'>
                         <label htmlFor='name'></label>
                         <input id='name' 
                                type='text' 
                                value={currentPastry.name} 
                                required
-                               onChange={(e) => setPastryName(e.target.value)}
+                               onChange={(e) => setCurrentPastry({ ...currentPastry, name: e.target.value })}
                                ></input>
                     </div>
 
@@ -236,7 +173,7 @@ const PastriesManagementPage = () => {
                               type='number' 
                               value={currentPastry.quantity} 
                               required
-                              onChange={(e) => setPastryQuantity(e.target.value)}></input>
+                              onChange={(e) => setCurrentPastry({ ...currentPastry, quantity: e.target.value })}></input>
                     </div>
 
                     <div className='input'>
@@ -244,7 +181,7 @@ const PastriesManagementPage = () => {
                         <input id='image' 
                                type='text' 
                                value={currentPastry.image}
-                               onChange={(e) => setPastryImage(e.target.value)}></input>
+                               onChange={(e) => setCurrentPastry({ ...currentPastry, image: e.target.value })}></input>
                     </div>
 
                     <Button label="Envoyer"
