@@ -6,6 +6,19 @@ const PastriesManagementPage = () => {
     const [pastries, setPastries] = useState([]);
     const [error, setError] = useState(null);
     const [displayAdd, setDisplayAdd] = useState(false);
+    const [newPastry, setNewPastry] = useState([
+        pastryName = '',
+        quantity = 0,
+        image = ''
+    ])
+
+    const handleSubmit = async () => {
+        try {
+          const response = await axios.post ('http://localhost:3001/api/pastries', newPastry { withCredentials: true })
+        }
+        catch (error) {
+            console.log(error);
+        };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -50,6 +63,7 @@ const PastriesManagementPage = () => {
                 </table>
         </div>
     );
+
     if(displayAdd===true){
         return (
             <div className='add-pastries'>
@@ -57,8 +71,8 @@ const PastriesManagementPage = () => {
                     <button className='ajout-btn' onClick={() => setDisplayAdd(!displayAdd)}>{displayAdd ? "Retour" : "Ajouter une patisserie"}</button>
                     <h1 >Ajouter une patisserie</h1>
                     <div className='input'>
-                        <label htmlFor='name'>Nom</label>
-                        <input id='name' type='text' required></input>
+                        <label htmlFor='pastryName'>Nom</label>
+                        <input id='pastryName' type='text' required></input>
                     </div>
                     <div className='input'>
                        <label htmlFor='quantity'>Quantité</label>
