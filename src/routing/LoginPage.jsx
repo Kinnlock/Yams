@@ -28,7 +28,7 @@ const LoginPage = () => {
       if (response.statusText == "OK") 
       {
             console.log(response);
-            redirect("/game");
+            window.location.href = '/game'
       }
     } catch (error) {
       console.error(error);
