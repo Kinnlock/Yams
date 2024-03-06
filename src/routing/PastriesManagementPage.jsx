@@ -88,7 +88,7 @@ const PastriesManagementPage = () => {
         return (
             <div className="PastriesManagementPage">
                 <h1 className="title">Pastries Management</h1>
-                <button className='ajout-btn' onClick={() => setDisplayAdd(!displayAdd)}>Ajouter une patisserie</button>
+                <button className='ajout-btn btn' onClick={() => setDisplayAdd(!displayAdd)}>Ajouter une patisserie</button>
                 {error && <p className="error">An error occurred: {error.message}</p>}
                 <table>
                     <thead>
@@ -137,7 +137,7 @@ const PastriesManagementPage = () => {
         return (
             <div className='add-pastries'>
                 <div className='inputs'>
-                    <button className='ajout-btn' onClick={() => setDisplayAdd(!displayAdd)}>{displayAdd ? "Retour" : "Ajouter une patisserie"}</button>
+                    <button className='ajout-btn btn' onClick={() => setDisplayAdd(!displayAdd)}>{displayAdd ? "Retour" : "Ajouter une patisserie"}</button>
                     <h1 >Ajouter une patisserie</h1>
                     <div className='input'>
                         <label htmlFor='pastryName'>Nom</label>
@@ -177,7 +177,7 @@ const PastriesManagementPage = () => {
         return (
             <div className='add-pastries'>
                 <div className='inputs'>
-                    <button className='ajout-btn' onClick={() => {setDisplayAdd(!displayAdd); setCurrentPastry(undefined)}}>{displayAdd ? "Retour" : "Ajouter une patisserie"}</button>
+                    <button className='ajout-btn btn' onClick={() => {setDisplayAdd(!displayAdd); setCurrentPastry(undefined)}}>{displayAdd ? "Retour" : "Ajouter une patisserie"}</button>
                     <h1 >Modifier une patisserie</h1>
                     <div className='input'>
                         <label htmlFor='name'></label>
