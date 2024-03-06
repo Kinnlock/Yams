@@ -48,7 +48,7 @@ const PastriesManagementPage = () => {
                         <td>{pastrie.name}</td>
                         <td>{pastrie.quantity}</td>
                         <td>{pastrie.quantityWon}</td>
-                        <td><Button onClick={(pastrie) => handleModifications(pastrie)}
+                        <td><Button onClick={() => handleModifications(pastrie)}
                                 label="Modifier"
                                 width="180px"
                                 height="40px"
@@ -66,7 +66,7 @@ const PastriesManagementPage = () => {
                 </table>
         </div>
     );
-    else if(displayAdd===true && !currentPastry){
+    else if(displayAdd===true && currentPastry==undefined){
         return (
             <div className='add-pastries'>
                 <div className='inputs'>
@@ -93,7 +93,7 @@ const PastriesManagementPage = () => {
         return (
             <div className='add-pastries'>
                 <div className='inputs'>
-                    <button className='ajout-btn' onClick={() => setDisplayAdd(!displayAdd)}>{displayAdd ? "Retour" : "Ajouter une patisserie"}</button>
+                    <button className='ajout-btn' onClick={() => {setDisplayAdd(!displayAdd); setCurrentPastry(undefined)}}>{displayAdd ? "Retour" : "Ajouter une patisserie"}</button>
                     <h1 >Ajouter une patisserie</h1>
                     <div className='input'>
                         <label htmlFor='name'></label>
