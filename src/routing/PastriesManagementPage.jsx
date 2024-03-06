@@ -25,6 +25,28 @@ const PastriesManagementPage = () => {
         }
 
     }
+
+    const modifHandleSubmit = async () => {
+        try {
+            let id = currentPastry.id
+            const response = await axios.put (`http://localhost:3001/api/pastry/${id}`, currentPastry, { withCredentials: true });
+
+            console.log('Patiserie ajouté:', response.data);
+
+            setNewPastry({
+                name: '',
+                quantity: 1,
+                image: ''
+            });
+
+            const updatedResponse = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
+            setPastries(updatedResponse.data);
+        }
+        catch (error) {
+            console.error('Error adding pastry:', error);
+        }
+    }
+
     const handleSubmit = async () => {
         try {
             const response = await axios.post ('http://localhost:3001/api/pastry', newPastry, { withCredentials: true });
@@ -66,7 +88,7 @@ const PastriesManagementPage = () => {
         return (
             <div className="PastriesManagementPage">
                 <h1 className="title">Pastries Management</h1>
-                <button className='ajout-btn' onClick={() => setDisplayAdd(!displayAdd)}>Ajouter une patisserie</button>
+                <button className='ajout-btn btn' onClick={() => setDisplayAdd(!displayAdd)}>Ajouter une patisserie</button>
                 {error && <p className="error">An error occurred: {error.message}</p>}
                 <table>
                     <thead>
@@ -115,14 +137,14 @@ const PastriesManagementPage = () => {
         return (
             <div className='add-pastries'>
                 <div className='inputs'>
-                    <button className='ajout-btn' onClick={() => setDisplayAdd(!displayAdd)}>{displayAdd ? "Retour" : "Ajouter une patisserie"}</button>
+                    <button className='ajout-btn btn' onClick={() => setDisplayAdd(!displayAdd)}>{displayAdd ? "Retour" : "Ajouter une patisserie"}</button>
                     <h1 >Ajouter une patisserie</h1>
                     <div className='input'>
                         <label htmlFor='pastryName'>Nom</label>
                         <input 
                             id='pastryName' 
                             type='text' 
-                            value={newPastry.pastryName} 
+                            defvalue={newPastry.pastryName} 
                             onChange={(e) => setNewPastry({ ...newPastry, name: e.target.value })}
                             required
                         ></input>
@@ -155,7 +177,7 @@ const PastriesManagementPage = () => {
         return (
             <div className='add-pastries'>
                 <div className='inputs'>
-                    <button className='ajout-btn' onClick={() => {setDisplayAdd(!displayAdd); setCurrentPastry(undefined)}}>{displayAdd ? "Retour" : "Ajouter une patisserie"}</button>
+                    <button className='ajout-btn btn' onClick={() => {setDisplayAdd(!displayAdd); setCurrentPastry(undefined)}}>{displayAdd ? "Retour" : "Ajouter une patisserie"}</button>
                     <h1 >Modifier une patisserie</h1>
                     <div className='input'>
                         <label htmlFor='name'></label>
@@ -184,7 +206,8 @@ const PastriesManagementPage = () => {
                                onChange={(e) => setCurrentPastry({ ...currentPastry, image: e.target.value })}></input>
                     </div>
 
-                    <Button label="Envoyer"
+                    <Button onClick={() => modifHandleSubmit()}
+                            label="Envoyer"
                             width="80px"
                             height="30px"
                             color="antiquewhite"
