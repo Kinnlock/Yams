@@ -48,3 +48,10 @@ table {
 
 
 }
+
+.deco-btn{
+    position: absolute;
+    z-index: 50;
+    top: 10%;
+    left: 10%;
+}

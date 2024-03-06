@@ -3,15 +3,34 @@ import Game from './components/game';
 import LoginPage from './routing/LoginPage';
 import PastriesManagementPage from './routing/PastriesManagementPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './routing/PastriesManagementPage.css';
+import axios from 'axios';
+import { useState } from 'react';
 
 function App() {
+
+  const [displayDeco, setDisplayDeco] = useState(false);
+
   return (
     <>
       <Router>
+      {displayDeco && (
+        <button className='btn deco-btn' onClick={async () => {
+          try {
+            await axios.get('http://localhost:3001/logout', { withCredentials: true });
+            setDisplayDeco(false);
+            alert('Vous êtes déconnecté');
+          } catch (error) {
+            alert('Vous devez vous connecter avant de vous déconnecter');
+          }
+        }}>
+          Se déconnecter
+        </button>
+      )}
         <Routes>
-         <Route path="/" element={<LoginPage />}></Route>
+         <Route path="/" element={<LoginPage setDisplayDeco={setDisplayDeco}/>}></Route>
          <Route path="/game" element={<Game />}></Route>
-         <Route path="/management" element={<PastriesManagementPage />}></Route>
+         <Route path="/management" element={<PastriesManagementPage setDisplayDeco={setDisplayDeco}/>}></Route>
         </Routes>
       </Router>
     </>

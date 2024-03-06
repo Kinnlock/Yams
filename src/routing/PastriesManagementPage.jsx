@@ -3,7 +3,7 @@ import axios from 'axios';
 import './PastriesManagementPage.css';
 import Button from '../components/Button';
 
-const PastriesManagementPage = () => {
+const PastriesManagementPage = ({setDisplayDeco}) => {
     const [pastries, setPastries] = useState([]);
     const [error, setError] = useState(null);
     const [currentPastry, setCurrentPastry] = useState(undefined);
@@ -77,8 +77,11 @@ const PastriesManagementPage = () => {
             try {
                 const response = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
                 setPastries(response.data);
+                setDisplayDeco(true);
             } catch (error) {
                 setError(error);
+                alert("Veuillez d'abord vous connecter")
+                window.location.href = '/'
             }
         };
         fetchData();

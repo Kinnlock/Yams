@@ -2,9 +2,8 @@ import "./LoginPage.css";
 import { useState } from "react";
 import Button from "../components/Button";
 import axios from "axios";
-import { redirect } from "react-router-dom";
 
-const LoginPage = () => {
+const LoginPage = ({setDisplayDeco}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -25,9 +24,10 @@ const LoginPage = () => {
         { withCredentials: true }
       );
 
-      if (response.statusText == "OK") 
+      if (response.statusText === "OK") 
       {
             console.log(response);
+            setDisplayDeco(true);
             window.location.href = '/game'
       }
     } catch (error) {
