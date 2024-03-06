@@ -10,10 +10,21 @@ const PastriesManagementPage = () => {
     const [displayAdd, setDisplayAdd] = useState(false);
     const [newPastry, setNewPastry] = useState({
         name : '',
-        quantity : 0,
+        quantity : 1,
         image : ''
     });
+    const deletePastry = async (id) => {
+        try {
+            const response = await axios.delete(`http://localhost:3001/api/pastry/${id}`, { withCredentials: true })
+            console.log(response);
+            const updatedResponse = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
+            setPastries(updatedResponse.data);
+        }
+        catch(error) {
+            console.error('Error delete pastry:', error);
+        }
 
+    }
     const handleSubmit = async () => {
         try {
             const response = await axios.post ('http://localhost:3001/api/pastry', newPastry, { withCredentials: true });
@@ -22,7 +33,7 @@ const PastriesManagementPage = () => {
 
             setNewPastry({
                 name: '',
-                quantity: 0,
+                quantity: 1,
                 image: ''
             });
 
@@ -78,6 +89,17 @@ const PastriesManagementPage = () => {
                                             height="40px"
                                             color="antiquewhite"
                                             backgroundColor="#052E33"
+                                            borderRadius="15px"
+                                            fontSize="1em"
+                                            margin="25px"
+                                    />
+                                </td>
+                                <td><Button onClick={() => deletePastry(pastrie.id)}
+                                            label="Supprimer"
+                                            width="180px"
+                                            height="40px"
+                                            color="antiquewhite"
+                                            backgroundColor="red"
                                             borderRadius="15px"
                                             fontSize="1em"
                                             margin="25px"
