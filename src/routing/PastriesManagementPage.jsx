@@ -206,7 +206,8 @@ const PastriesManagementPage = () => {
                                onChange={(e) => setCurrentPastry({ ...currentPastry, image: e.target.value })}></input>
                     </div>
 
-                    <Button label="Envoyer"
+                    <Button onClick={() => modifHandleSubmit()}
+                            label="Envoyer"
                             width="80px"
                             height="30px"
                             color="antiquewhite"
