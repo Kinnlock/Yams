@@ -15,7 +15,6 @@ const PastriesManagementPage = () => {
                 setError(error);
             }
         };
-
         fetchData();
     }, []);
 
@@ -23,11 +22,29 @@ const PastriesManagementPage = () => {
         <div className="PastriesManagementPage">
             <h1>Pastries Management</h1>
             {error && <p className="error">An error occurred: {error.message}</p>}
-            <ul>
-                {pastries.map(pastry => (
-                    <li key={pastry.id}>{pastry.name}</li>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Quantité</th>
+                            <th>Quantité gagné</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                {pastries.map(pastrie => (
+                    <>
+                    <tr key={pastrie.id}>
+                        <td>{pastrie.name}</td>
+                        <td>{pastrie.quantity}</td>
+                        <td>{pastrie.quantityWon}</td>
+                        <button>Modifier</button> 
+                        {/*Jade je te laisse mettre ton beau bouton*/}
+                    </tr>
+                    </>
                 ))}
-            </ul>
+                    </tbody>
+                </table>
         </div>
     );
 };
