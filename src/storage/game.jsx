@@ -12,9 +12,6 @@ export const gameApi = createApi({
         getWin : builder.query({
             query : (count) => `/game/win-pastries/${count}`
         }),
-        getAdminPastries : builder.query({
-            query : () => '/api/pastries'
-        })
     })
 })
 

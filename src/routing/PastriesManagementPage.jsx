@@ -1,48 +1,35 @@
-import "./PastriesManagementPage.css"
-import { useGetAdminPastriesQuery } from "../storage/game"
-const PastriesManagementPage = () {
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import './PastriesManagementPage.css';
 
-    const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = useGetAdminPastriesQuery();
+const PastriesManagementPage = () => {
+    const [pastries, setPastries] = useState([]);
+    const [error, setError] = useState(null);
 
-    if(pastriesError){
-        return(
-            <>
-                <p>{error}</p>
-            </>
-        )
-    }
-    if(pastriesIsLoading){
-        return(
-            <>
-                <p>Chargement</p>
-            </>
-        )
-    }
-    if(pastries){
-        return(
-            <>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nom</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {pastries.map((pastrie)=>(
-                            <>
-                                <th key={pastrie.id}>
-                                    <td>{pastrie.name}</td>
-                                </th>
-                            </>
-                        )
-                        )}
-                    </tbody>
-                </table>
-            </>
-        )
-    }
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
+                setPastries(response.data);
+            } catch (error) {
+                setError(error);
+            }
+        };
 
+        fetchData();
+    }, []);
 
-}
+    return (
+        <div className="PastriesManagementPage">
+            <h1>Pastries Management</h1>
+            {error && <p className="error">An error occurred: {error.message}</p>}
+            <ul>
+                {pastries.map(pastry => (
+                    <li key={pastry.id}>{pastry.name}</li>
+                ))}
+            </ul>
+        </div>
+    );
+};
 
-export default PastriesManagementPage
+export default PastriesManagementPage;
