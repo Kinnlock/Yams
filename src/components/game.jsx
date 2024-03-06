@@ -26,6 +26,19 @@ const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = u
       <>
         <div className='container'>
 
+          {(resultat[5] < 1 || resultat.length<1) && (
+            <Button 
+              label="Lancer le dé"
+              onClick={() => handleClick()}
+              width="150px"
+              height="40px"
+              color="antiquewhite"
+              backgroundColor="#052E33"
+              borderRadius="15px"
+              fontSize="1em"
+              margin="25px"
+            />
+          )}
           <div className='dices-container'>
             <div className='dices'>
             {resultat[0]}
@@ -43,19 +56,6 @@ const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = u
             {resultat[4]}
             </div>
           </div>
-          {(resultat[5] < 1 || resultat.length<1) && (
-            <Button 
-              label="Lancer le dé"
-              onClick={() => handleClick()}
-              width="150px"
-              height="40px"
-              color="antiquewhite"
-              backgroundColor="#052E33"
-              borderRadius="15px"
-              fontSize="1em"
-              margin="25px"
-            />
-          )}
         </div>
         
         {resultat[5] > 0 && <Prize quantity={resultat[5]} />} 
