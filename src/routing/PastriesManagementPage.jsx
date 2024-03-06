@@ -79,9 +79,9 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
                 setPastries(response.data);
                 setDisplayDeco(true);
             } catch (error) {
-                setError(error);
                 alert("Veuillez d'abord vous connecter")
                 window.location.href = '/'
+                setError(error);
             }
         };
         fetchData();
