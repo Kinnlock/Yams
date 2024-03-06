@@ -29,10 +29,12 @@
 }
 
 .column-name {
-    color: #C7D9D9;
+    color: #85A6A6;
 }
 
 table {
-    border-top: 1px solid #C7D9D9;
-    border-bottom: 1px solid #1B5959;
+    border-width: 2px;
+    border-style: solid;
+    border-image: linear-gradient(to top, #C7D9D9, #042326) 1;
+    width: 950px;
 }
