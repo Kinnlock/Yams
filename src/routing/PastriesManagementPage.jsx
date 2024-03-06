@@ -1,13 +1,13 @@
 import "./PastriesManagementPage.css"
 import { useGetAdminPastriesQuery } from "../storage/game"
-const PastriesManagementPage = () {
+const PastriesManagementPage = () => {
 
     const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = useGetAdminPastriesQuery();
 
     if(pastriesError){
         return(
             <>
-                <p>{error}</p>
+                <p>{pastriesError}</p>
             </>
         )
     }
@@ -30,9 +30,9 @@ const PastriesManagementPage = () {
                     <tbody>
                         {pastries.map((pastrie)=>(
                             <>
-                                <th key={pastrie.id}>
+                                <tr key={pastrie.id}>
                                     <td>{pastrie.name}</td>
-                                </th>
+                                </tr>
                             </>
                         )
                         )}

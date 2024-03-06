@@ -2,6 +2,7 @@ import "./LoginPage.css";
 import { useState } from "react";
 import Button from "../components/Button";
 import axios from "axios";
+import { redirect } from "react-router-dom";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -23,7 +24,12 @@ const LoginPage = () => {
         { email: email, password: password },
         { withCredentials: true }
       );
-      console.log(response);
+
+      if (response.statusText == "OK") 
+      {
+            console.log(response);
+            redirect("/game");
+      }
     } catch (error) {
       console.error(error);
       setError("Une erreur s'est produite lors de la connexion.");

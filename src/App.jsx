@@ -1,6 +1,7 @@
 import './App.css';
 import Game from './components/game';
 import LoginPage from './routing/LoginPage';
+import PastriesManagementPage from './routing/PastriesManagementPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -8,8 +9,9 @@ function App() {
     <>
       <Router>
         <Routes>
-         <Route path="/login" element={<LoginPage></LoginPage>}></Route>
-         <Route path="/game" element={<Game></Game>}></Route>
+         <Route path="/login" element={<LoginPage />}></Route>
+         <Route path="/game" element={<Game />}></Route>
+         <Route path="/management" element={<PastriesManagementPage />}></Route>
         </Routes>
 
       </Router>
