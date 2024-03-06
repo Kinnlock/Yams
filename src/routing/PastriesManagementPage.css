@@ -33,13 +33,15 @@
 }
 
 table {
-    border-top: 1px solid #C7D9D9;
-    border-bottom: 1px solid #1B5959;
+    border-width: 2px;
+    border-style: solid;
+    border-image: linear-gradient(to top, #C7D9D9, #042326) 1;
+    width: 950px;
 }
 
 .btn{
-    width: 105px;
-    height: 50px;
+    width: 150px;
+    height: 30px;
     color: antiquewhite;
     background-color: #052E33;
     border-radius:15px;

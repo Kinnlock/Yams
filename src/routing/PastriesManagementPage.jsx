@@ -31,7 +31,7 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
             let id = currentPastry.id
             const response = await axios.put (`http://localhost:3001/api/pastry/${id}`, currentPastry, { withCredentials: true });
 
-            console.log('Patiserie ajouté:', response.data);
+            console.log('Pâtisserie ajouté:', response.data);
 
             setNewPastry({
                 name: '',
@@ -51,7 +51,7 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
         try {
             const response = await axios.post ('http://localhost:3001/api/pastry', newPastry, { withCredentials: true });
 
-            console.log('Patiserie ajouté:', response.data);
+            console.log('Pâtisserie ajouté:', response.data);
 
             setNewPastry({
                 name: '',
@@ -90,9 +90,10 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
     if (displayAdd === false) {
         return (
             <div className="PastriesManagementPage">
-                <h1 className="title">Pastries Management</h1>
-                <button className='ajout-btn btn' onClick={() => setDisplayAdd(!displayAdd)}>Ajouter une patisserie</button>
-                {error && <p className="error">An error occurred: {error.message}</p>}
+                    <h1 className="title">Pastries Management</h1>
+                    <button className='ajout-btn btn' onClick={() => setDisplayAdd(!displayAdd)}>Ajouter une patisserie</button>
+                    {error && <p className="error">An error occurred: {error.message}</p>}
+
                 <table>
                     <thead>
                         <tr>
@@ -141,7 +142,7 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
             <div className='add-pastries'>
                 <div className='inputs'>
                     <button className='ajout-btn btn' onClick={() => setDisplayAdd(!displayAdd)}>{displayAdd ? "Retour" : "Ajouter une patisserie"}</button>
-                    <h1 >Ajouter une patisserie</h1>
+                    <h1 className="title">Ajouter une patisserie</h1>
                     <div className='input'>
                         <label htmlFor='pastryName'>Nom</label>
                         <input 
@@ -181,7 +182,7 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
             <div className='add-pastries'>
                 <div className='inputs'>
                     <button className='ajout-btn btn' onClick={() => {setDisplayAdd(!displayAdd); setCurrentPastry(undefined)}}>{displayAdd ? "Retour" : "Ajouter une patisserie"}</button>
-                    <h1 >Modifier une patisserie</h1>
+                    <h1 className="title">Modifier une patisserie</h1>
                     <div className='input'>
                         <label htmlFor='name'></label>
                         <input id='name' 
@@ -216,7 +217,8 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
                             color="antiquewhite"
                             backgroundColor="#052E33"
                             borderRadius="15px"
-                            fontSize="0.8em"/>
+                            fontSize="0.8em"
+                            margin="15px"/>
                 </div>
             </div>
         );
