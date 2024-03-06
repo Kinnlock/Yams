@@ -5,6 +5,7 @@ import './PastriesManagementPage.css';
 const PastriesManagementPage = () => {
     const [pastries, setPastries] = useState([]);
     const [error, setError] = useState(null);
+    const [displayAdd, setDisplayAdd] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -18,9 +19,11 @@ const PastriesManagementPage = () => {
         fetchData();
     }, []);
 
+    if(displayAdd===false)
     return (
         <div className="PastriesManagementPage">
             <h1>Pastries Management</h1>
+            <button className='ajout-btn' onClick={() => setDisplayAdd(!displayAdd)}>Ajouter une patisserie</button>
             {error && <p className="error">An error occurred: {error.message}</p>}
                 <table>
                     <thead>
@@ -47,6 +50,29 @@ const PastriesManagementPage = () => {
                 </table>
         </div>
     );
+    if(displayAdd===true){
+        return (
+            <div className='add-pastries'>
+                <div className='inputs'>
+                    <button className='ajout-btn' onClick={() => setDisplayAdd(!displayAdd)}>{displayAdd ? "Retour" : "Ajouter une patisserie"}</button>
+                    <h1 >Ajouter une patisserie</h1>
+                    <div className='input'>
+                        <label htmlFor='name'>Nom</label>
+                        <input id='name' type='text' required></input>
+                    </div>
+                    <div className='input'>
+                       <label htmlFor='quantity'>Quantité</label>
+                       <input id='quantity' type='number' required></input>
+                    </div>
+                    <div className='input'>
+                        <label htmlFor='image'>URL de l'image</label>
+                        <input id='image' type='text'></input>
+                    </div>
+                    <button>Envoyer</button>
+                </div>
+            </div>
+        )
+    }
 };
 
 export default PastriesManagementPage;
