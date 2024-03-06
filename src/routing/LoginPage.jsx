@@ -24,7 +24,8 @@ const LoginPage = () => {
 
 
     return (
-        <div className="login-page">
+        <div className="login-page">  
+
             <h1 className="title">Gagnez des pâtisseries !</h1>
 
             <div className="input-container">
