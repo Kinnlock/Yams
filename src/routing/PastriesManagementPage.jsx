@@ -107,24 +107,24 @@ const PastriesManagementPage = () => {
                                 <td>{pastrie.quantityWon}</td>
                                 <td><Button onClick={() => handleModifications(pastrie)}
                                             label="Modifier"
-                                            width="180px"
+                                            width="90px"
                                             height="40px"
                                             color="antiquewhite"
                                             backgroundColor="#052E33"
                                             borderRadius="15px"
-                                            fontSize="1em"
-                                            margin="25px"
+                                            fontSize="0.9em"
+                                            margin="15px"
                                     />
                                 </td>
                                 <td><Button onClick={() => deletePastry(pastrie.id)}
                                             label="Supprimer"
-                                            width="180px"
+                                            width="90px"
                                             height="40px"
                                             color="antiquewhite"
-                                            backgroundColor="red"
+                                            backgroundColor="#A3241A"
                                             borderRadius="15px"
-                                            fontSize="1em"
-                                            margin="25px"
+                                            fontSize="0.9em"
+                                            margin="15px"
                                     />
                                 </td>
                             </tr>
@@ -185,7 +185,7 @@ const PastriesManagementPage = () => {
                                type='text' 
                                value={currentPastry.name} 
                                required
-                               onChange={(e) => setPastryName(e.target.value)}
+                               onChange={(e) => setCurrentPastry({ ...currentPastry, name: e.target.value })}
                                ></input>
                     </div>
 
@@ -195,7 +195,7 @@ const PastriesManagementPage = () => {
                               type='number' 
                               value={currentPastry.quantity} 
                               required
-                              onChange={(e) => setPastryQuantity(e.target.value)}></input>
+                              onChange={(e) => setCurrentPastry({ ...currentPastry, quantity: e.target.value })}></input>
                     </div>
 
                     <div className='input'>
@@ -203,7 +203,7 @@ const PastriesManagementPage = () => {
                         <input id='image' 
                                type='text' 
                                value={currentPastry.image}
-                               onChange={(e) => setPastryImage(e.target.value)}></input>
+                               onChange={(e) => setCurrentPastry({ ...currentPastry, image: e.target.value })}></input>
                     </div>
 
                     <Button label="Envoyer"
