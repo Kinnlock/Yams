@@ -24,7 +24,21 @@ const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = u
 
     return (
       <>
+
         <div className='container'>
+          
+        <div className="management-button">
+            <Button 
+              label="Gérer les pâtisseries"
+              width="180px"
+              height="40px"
+              color="antiquewhite"
+              backgroundColor="#052E33"
+              borderRadius="15px"
+              fontSize="1em"
+              margin="25px"
+            />
+            </div>  
 
           {(resultat[5] < 1 || resultat.length<1) && (
             <Button 
