@@ -25,6 +25,28 @@ const PastriesManagementPage = () => {
         }
 
     }
+
+    const modifHandleSubmit = async () => {
+        try {
+            let id = currentPastry.id
+            const response = await axios.put (`http://localhost:3001/api/pastry/${id}`, currentPastry, { withCredentials: true });
+
+            console.log('Patiserie ajouté:', response.data);
+
+            setNewPastry({
+                name: '',
+                quantity: 1,
+                image: ''
+            });
+
+            const updatedResponse = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
+            setPastries(updatedResponse.data);
+        }
+        catch (error) {
+            console.error('Error adding pastry:', error);
+        }
+    }
+
     const handleSubmit = async () => {
         try {
             const response = await axios.post ('http://localhost:3001/api/pastry', newPastry, { withCredentials: true });
@@ -122,7 +144,7 @@ const PastriesManagementPage = () => {
                         <input 
                             id='pastryName' 
                             type='text' 
-                            value={newPastry.pastryName} 
+                            defvalue={newPastry.pastryName} 
                             onChange={(e) => setNewPastry({ ...newPastry, name: e.target.value })}
                             required
                         ></input>
@@ -169,7 +191,7 @@ const PastriesManagementPage = () => {
                         <label htmlFor='image'>URL de l'image</label>
                         <input id='image' type='text' value={currentPastry.image}></input>
                     </div>
-                    <button>Envoyer</button>
+                    <button onClick={modifHandleSubmit}>Envoyer</button>
                 </div>
             </div>
         );
