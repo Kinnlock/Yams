@@ -2,6 +2,8 @@ import { useState } from 'react';
 import Prize from '../components/Prize';
 import { useGetPastriesQuery } from '../storage/game';
 import Button from '../components/Button';
+import { Link } from 'react-router-dom';
+import "./game.css"
 
 const Game = () => {
 
@@ -24,21 +26,23 @@ const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = u
 
     return (
       <>
-
-        <div className='container'>
-          
         <div className="management-button">
+            <Link to="/management">
             <Button 
               label="Gérer les pâtisseries"
-              width="180px"
-              height="40px"
+              width="130px"
+              height="30px"
               color="antiquewhite"
               backgroundColor="#052E33"
               borderRadius="15px"
-              fontSize="1em"
+              fontSize="0.9em"
               margin="25px"
             />
-            </div>  
+            </Link>
+          </div>
+
+        <div className='container'>
+          
 
           {(resultat[5] < 1 || resultat.length<1) && (
             <Button 

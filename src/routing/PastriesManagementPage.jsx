@@ -93,10 +93,10 @@ const PastriesManagementPage = () => {
                 <table>
                     <thead>
                         <tr>
-                            <th>Nom</th>
-                            <th>Quantité</th>
-                            <th>Quantité gagné</th>
-                            <th>Action</th>
+                            <th className="column-name">Nom</th>
+                            <th className="column-name">Quantité</th>
+                            <th className="column-name">Quantité gagnée</th>
+                            <th className="column-name">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -181,17 +181,38 @@ const PastriesManagementPage = () => {
                     <h1 >Modifier une patisserie</h1>
                     <div className='input'>
                         <label htmlFor='name'></label>
-                        <input id='name' type='text' value={currentPastry.name} required></input>
+                        <input id='name' 
+                               type='text' 
+                               value={currentPastry.name} 
+                               required
+                               onChange={(e) => setPastryName(e.target.value)}
+                               ></input>
                     </div>
+
                     <div className='input'>
                        <label htmlFor='quantity'>Quantité</label>
-                       <input id='quantity' type='number' value={currentPastry.quantity} required></input>
+                       <input id='quantity' 
+                              type='number' 
+                              value={currentPastry.quantity} 
+                              required
+                              onChange={(e) => setPastryQuantity(e.target.value)}></input>
                     </div>
+
                     <div className='input'>
                         <label htmlFor='image'>URL de l'image</label>
-                        <input id='image' type='text' value={currentPastry.image}></input>
+                        <input id='image' 
+                               type='text' 
+                               value={currentPastry.image}
+                               onChange={(e) => setPastryImage(e.target.value)}></input>
                     </div>
-                    <button onClick={modifHandleSubmit}>Envoyer</button>
+
+                    <Button label="Envoyer"
+                            width="80px"
+                            height="30px"
+                            color="antiquewhite"
+                            backgroundColor="#052E33"
+                            borderRadius="15px"
+                            fontSize="0.8em"/>
                 </div>
             </div>
         );

@@ -17,6 +17,7 @@ ul {
     justify-content: center;
     padding: 0.5rem;
     gap: 0.5rem;
+    border-radius: 10px;
 }
 
 .dices {
@@ -34,6 +35,7 @@ ul {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 50px;
 }
 
 .container {
