@@ -1,27 +1,34 @@
-import "./LoginPage.css"
-import {useState} from "react"
+import "./LoginPage.css";
+import { useState } from "react";
 import Button from "../components/Button";
-import React from "react";
 import axios from "axios";
 
 const LoginPage = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-    const handleChangeEmail = (e) => {
-        setEmail(e.target.value);
-      };
-    
-      const handleChangePassword = (e) => {
-        setPassword(e.target.value);
-      };
-    
-      const  handleLogin = async () => {
-        const reponse = await axios.post('http://localhost:3001/login', { email: email, password: password },{ withCredentials: true });
-        console.log(reponse);
-      };
+  const handleChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
 
+  const handleChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
 
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post(
+        'http://localhost:3001/login',
+        { email: email, password: password },
+        { withCredentials: true }
+      );
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+      setError("Une erreur s'est produite lors de la connexion.");
+    }
+  };
 
     return (
         <div className="login-page">  
@@ -44,19 +51,21 @@ const LoginPage = () => {
                        onChange={handleChangePassword}></input>
             </div>
 
-            <Button 
-              label="Se connecter"
-              onClick={() => handleLogin()}
-              width="120px"
-              height="40px"
-              color="antiquewhite"
-              backgroundColor="#052E33"
-              borderRadius="15px"
-              fontSize="1em"
-              margin="25px"
-            />
-        </div>
-    )
-}
+      {error && <p className="error">{error}</p>}
 
-export default LoginPage
+      <Button 
+        label="Se connecter"
+        onClick={handleLogin}
+        width="120px"
+        height="40px"
+        color="antiquewhite"
+        backgroundColor="#052E33"
+        borderRadius="15px"
+        fontSize="1em"
+        margin="25px"
+      />
+    </div>
+  );
+};
+
+export default LoginPage;
