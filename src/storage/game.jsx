@@ -12,8 +12,11 @@ export const gameApi = createApi({
         getWin : builder.query({
             query : (count) => `/game/win-pastries/${count}`
         }),
+        getAdminPastries : builder.query({
+            query : () => '/api/pastries'
+        })
     })
 })
 
 // hook qui permet d'utiliser l'API de createApi
-export const { useGetPastriesQuery, useGetWinQuery } = gameApi
+export const { useGetPastriesQuery, useGetWinQuery, useGetAdminPastriesQuery } = gameApi

@@ -24,7 +24,6 @@ const LoginPage = () => {
         { withCredentials: true }
       );
       console.log(response);
-      // Ici, vous pouvez gérer la réponse de votre serveur
     } catch (error) {
       console.error(error);
       setError("Une erreur s'est produite lors de la connexion.");
