@@ -1,13 +1,12 @@
 import "./LoginPage.css"
 import {useState} from "react"
 import Button from "../components/Button";
-import { usePostLoginQuery } from "../storage/game";
 import React from "react";
+import axios from "axios";
 
 const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [state,setState] = useState("")
 
     const handleChangeEmail = (e) => {
         setEmail(e.target.value);
@@ -17,29 +16,33 @@ const LoginPage = () => {
         setPassword(e.target.value);
       };
     
-      const handleLogin = () => {
-        setState({ email: email, password: password });
-        const { data, loading, error } = usePostLoginQuery(state);
-        console.log(data) ;
+      const  handleLogin = async () => {
+        const reponse = await axios.post('http://localhost:3001/login', { email: email, password: password },{ withCredentials: true });
+        console.log(reponse);
       };
-
-    //   const login  = (email,password) => {
-    //     setState({ email: email, password: password });
-    //     const { data, loading, error } = usePostLoginQuery(state);
-    //   };
 
 
 
     return (
         <div className="LoginPage">
             <h1>Login Page</h1>
-            <label for="email" onChange={handleChangeEmail}>Email</label>
-            <input id="email" type="email" ></input>
+            <label htmlFor="email">Email</label>
+            <input id="email" type="email" onChange={handleChangeEmail}></input>
 
-            <label for="password" onChange={handleChangePassword}>Mot de passe</label>
-            <input id="password" type="password" ></input>
+            <label htmlFor="password">Mot de passe</label>
+            <input id="password" type="password" onChange={handleChangePassword}></input>
 
-            <Button onClick={handleLogin} label="Se connecter" />
+            <Button 
+              label="Se connecter"
+              onClick={() => handleLogin()}
+              width="120px"
+              height="40px"
+              color="antiquewhite"
+              backgroundColor="#052E33"
+              borderRadius="15px"
+              fontSize="1em"
+              margin="25px"
+            />
         </div>
     )
 }
