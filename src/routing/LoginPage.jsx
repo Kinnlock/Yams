@@ -3,6 +3,7 @@ import { useState } from "react";
 import Button from "../components/Button";
 import axios from "axios";
 import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom';
 
 const LoginPage = ({ setDisplayDeco }) => {
   const [email, setEmail] = useState("");
@@ -94,6 +95,20 @@ const LoginPage = ({ setDisplayDeco }) => {
           margin="25px"
         />
       </form>
+      <p>Ou</p>
+      <Link to="/game">
+        <Button
+            label="Continuer sans se connecter"
+            type="submit"
+            width="140px"
+            height="50px"
+            color="antiquewhite"
+            backgroundColor="#052E33"
+            borderRadius="15px"
+            fontSize="1em"
+            margin="25px"
+          />
+      </Link>
     </div>
   );
 }
