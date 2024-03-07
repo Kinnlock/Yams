@@ -3,9 +3,9 @@ import Prize from '../components/Prize';
 import { useGetPastriesQuery } from '../storage/game';
 import Button from '../components/Button';
 import { Link } from 'react-router-dom';
-import "./game.css"
+import "../css/game.css";
 
-const Game = () => {
+const GamePage = () => {
 
 const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = useGetPastriesQuery();
   const [resultat, setResultat] = useState([]); 
@@ -114,4 +114,4 @@ function result() {
 function de(){
   return Math.floor(Math.random() * (6-1) + 1);
 }
-export default Game
+export default GamePage
