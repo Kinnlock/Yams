@@ -26,7 +26,7 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
           showCancelButton: true,
           confirmButtonColor: "#3085d6",
           cancelButtonColor: "#d33",
-          confirmButtonText: "Confirmer"
+          confirmButtonText: "Je suis sûre"
         }).then(async (result) => {
           if (result.isConfirmed) {
             try {
