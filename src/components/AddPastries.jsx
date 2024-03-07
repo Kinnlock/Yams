@@ -1,5 +1,5 @@
-import Button from './components/Button';
-const AddPastryForm = ({ newPastry, setNewPastry, handleSubmit }) => {
+import Button from './Button';
+const AddPastryForm = ({ newPastry, setNewPastry, handleSubmit, displayAdd, setDisplayAdd }) => {
     return (
         <div className='add-pastries'>
             <div className='inputs'>

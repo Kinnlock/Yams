@@ -140,10 +140,10 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
             </div>
         );
     } else if (displayAdd === true && currentPastry === undefined) {
-        <AddPastryForm newPastry={newPastry} setNewPastry={setNewPastry} handleSubmit={handleSubmit}></AddPastryForm>
+        return <AddPastryForm newPastry={newPastry} setNewPastry={setNewPastry} handleSubmit={handleSubmit} displayAdd={displayAdd} setDisplayAdd={setDisplayAdd}></AddPastryForm>
     }
     else if (displayAdd === true && currentPastry) {
-        <ModifPastries currentPastry={currentPastry} setCurrentPastry={currentPastry} modifHandleSubmit={modifHandleSubmit}></ModifPastries>
+        return <ModifPastries currentPastry={currentPastry} setCurrentPastry={currentPastry} modifHandleSubmit={modifHandleSubmit} displayAdd={displayAdd} setDisplayAdd={setDisplayAdd}></ModifPastries>
     }
 };
 

@@ -1,6 +1,6 @@
-import Button from './components/Button';
+import Button from './Button';
 
-const ModifPastries = ({ currentPastry, setCurrentPastry, modifHandleSubmit }) => {
+const ModifPastries = ({ currentPastry, setCurrentPastry, modifHandleSubmit, displayAdd, setDisplayAdd }) => {
     return (
         <div className='add-pastries'>
             <div className='inputs'>
