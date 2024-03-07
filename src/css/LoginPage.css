@@ -28,8 +28,6 @@
 .title {
     color: #052E33;
 }
-.connect{
-}
 @media screen and (max-height: 600px) {
     .connect{
         display: flex;
