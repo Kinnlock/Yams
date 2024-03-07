@@ -36,7 +36,6 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
             let id = currentPastry.id
             const response = await axios.put (`http://localhost:3001/api/pastry/${id}`, currentPastry, { withCredentials: true });
 
-            console.log('Pâtisserie ajouté:', response.data);
 
             setNewPastry({
                 name: '',
