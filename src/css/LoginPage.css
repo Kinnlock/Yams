@@ -28,10 +28,7 @@
 .title {
     color: #052E33;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> bc2a7ad082c23ce7117565c6bac4b7185f959367
 @media screen and (max-height: 600px) {
     .connect{
         display: flex;

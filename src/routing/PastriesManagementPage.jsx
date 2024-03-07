@@ -18,29 +18,20 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
         quantity : 1,
         image : ''
     });
-<<<<<<< HEAD
-    const deletePastry = async (id) => {
-        try {
-            const response = await axios.delete(`http://localhost:3001/api/pastry/${id}`, { withCredentials: true })
-            console.log(response);
-            const updatedResponse = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
-            setPastries(updatedResponse.data);
-        }
-        catch(error) {
-            console.error('Error delete pastry:', error);
-        }
-
-    }
-=======
     const deletePastry = (id) => {
         Swal.fire({
-          title: "Êtes-vous sûr ?",
+          title: "Attention !",
           text: "Cette action est irréversible",
           icon: "warning",
           showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Je suis sûre"
+          background: "#1B5959",
+          color:"antiquewhite",
+          confirmButtonColor: '#052E33',
+          confirmButtonTextColor: 'antiquewhite',
+          cancelButtonColor: "#A3241A",
+          confirmButtonText: "Je confirme",
+          cancelButtonText : "Annuler",
+          width: "350px"
         }).then(async (result) => {
           if (result.isConfirmed) {
             try {
@@ -49,22 +40,30 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
               const updatedResponse = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
               setPastries(updatedResponse.data);
               Swal.fire({
-                title: "Supprimé",
-                text: "La pâtisserie a bien été supprimée",
-                icon: "success"
+                title: "La suppression a bien été effectuée",
+                icon: "success",
+                iconColor: "#042326",
+                background: "#1B5959",
+                color:"antiquewhite",
+                confirmButtonColor: '#052E33',
+                confirmButtonTextColor: 'antiquewhite',
+                width: "350px"
               });
             } catch (error) {
               console.error('Error delete pastry:', error);
               Swal.fire({
                 title: "Erreur",
                 text: "Une erreur est survenue lors de la suppression de la pâtisserie",
-                icon: "error"
+                icon: "error",
+                background: "#1B5959",
+                color:"antiquewhite",
+                confirmButtonColor: '#052E33',
+                confirmButtonTextColor: 'antiquewhite',
               });
             }
           }
         });
       };
->>>>>>> bc2a7ad082c23ce7117565c6bac4b7185f959367
 
     const modifHandleSubmit = async () => {
         try {
@@ -220,10 +219,9 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
                                             backgroundColor="#052E33"
                                             borderRadius="15px"
                                             fontSize="0.9em"
-                                            margin="15px"
-                                    />
-                                </td>
-                                <td><Button onClick={() => deletePastry(pastrie.id)}
+                                            margin="15px"/>
+
+                                <Button onClick={() => deletePastry(pastrie.id)}
                                             label="Supprimer"
                                             width="90px"
                                             height="30px"
@@ -231,8 +229,7 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
                                             backgroundColor="#A3241A"
                                             borderRadius="15px"
                                             fontSize="0.9em"
-                                            margin="15px"
-                                    />
+                                            margin="15px"/>
                                 </td>
                             </tr>
                         ))}
