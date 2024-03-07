@@ -126,6 +126,7 @@ const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = u
                   text: "imaginons un lien vers un bon d'achat ou quelque chose",
                   background: "#1B5959",
                   color:"antiquewhite",
+                  iconColor: "#042326",
                   icon: 'succes',
                   width: "400px"
                 })
