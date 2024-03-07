@@ -128,6 +128,8 @@ const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = u
                   color:"antiquewhite",
                   iconColor: "#042326",
                   icon: 'succes',
+                  confirmButtonColor: '#052E33',
+                  confirmButtonTextColor: 'antiquewhite',
                   width: "400px"
                 })
               }
