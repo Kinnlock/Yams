@@ -18,25 +18,44 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
         quantity : 1,
         image : ''
     });
-    const deletePastry = async (id) => {
-        try {
-            const response = await axios.delete(`http://localhost:3001/api/pastry/${id}`, { withCredentials: true })
-            console.log(response);
-            const updatedResponse = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
-            setPastries(updatedResponse.data);
-        }
-        catch(error) {
-            console.error('Error delete pastry:', error);
-        }
-
-    }
+    const deletePastry = (id) => {
+        Swal.fire({
+          title: "Êtes-vous sûr ?",
+          text: "Cette action est irréversible",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Confirmer"
+        }).then(async (result) => {
+          if (result.isConfirmed) {
+            try {
+              const response = await axios.delete(`http://localhost:3001/api/pastry/${id}`, { withCredentials: true });
+              console.log(response);
+              const updatedResponse = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
+              setPastries(updatedResponse.data);
+              Swal.fire({
+                title: "Supprimé",
+                text: "La pâtisserie a bien été supprimée",
+                icon: "success"
+              });
+            } catch (error) {
+              console.error('Error delete pastry:', error);
+              Swal.fire({
+                title: "Erreur",
+                text: "Une erreur est survenue lors de la suppression de la pâtisserie",
+                icon: "error"
+              });
+            }
+          }
+        });
+      };
 
     const modifHandleSubmit = async () => {
         try {
             let id = currentPastry.id
             const response = await axios.put (`http://localhost:3001/api/pastry/${id}`, currentPastry, { withCredentials: true });
 
-            console.log('Pâtisserie ajouté:', response.data);
 
             setNewPastry({
                 name: '',
@@ -187,8 +206,7 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
                                             fontSize="0.9em"
                                             margin="15px"
                                     />
-                                </td>
-                                <td><Button onClick={() => deletePastry(pastrie.id)}
+                                    <Button onClick={() => deletePastry(pastrie.id)}
                                             label="Supprimer"
                                             width="90px"
                                             height="30px"

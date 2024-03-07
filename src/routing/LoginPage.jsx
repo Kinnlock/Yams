@@ -55,7 +55,9 @@ const LoginPage = ({ setDisplayDeco }) => {
         background: "#1B5959",
         color:"antiquewhite",
         icon: 'error',
-        width: "400px"
+        width: "400px",
+        confirmButtonColor: '#052E33',
+        confirmButtonTextColor: 'antiquewhite',
       })
     };
   }
