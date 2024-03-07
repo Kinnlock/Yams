@@ -143,7 +143,7 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
         return <AddPastryForm newPastry={newPastry} setNewPastry={setNewPastry} handleSubmit={handleSubmit} displayAdd={displayAdd} setDisplayAdd={setDisplayAdd}></AddPastryForm>
     }
     else if (displayAdd === true && currentPastry) {
-        return <ModifPastries currentPastry={currentPastry} setCurrentPastry={currentPastry} modifHandleSubmit={modifHandleSubmit} displayAdd={displayAdd} setDisplayAdd={setDisplayAdd}></ModifPastries>
+        return <ModifPastries currentPastry={currentPastry} setCurrentPastry={setCurrentPastry} modifHandleSubmit={modifHandleSubmit} displayAdd={displayAdd} setDisplayAdd={setDisplayAdd}></ModifPastries>
     }
 };
 
