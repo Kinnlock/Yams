@@ -46,7 +46,7 @@ ul {
 }
 
 .management-button {
-    position: fixed;
-    top: 0;
-    right: 0;
+    position: absolute;
+    top: 10%;
+    left: 80%;
 }

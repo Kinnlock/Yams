@@ -6,6 +6,7 @@ import PastriesManagementPage from './routing/PastriesManagementPage';
 import './css/PastriesManagementPage.css';
 import axios from 'axios';
 import { useState } from 'react';
+import Swal from 'sweetalert2'
 
 function App() {
 
@@ -19,9 +20,27 @@ function App() {
           try {
             await axios.get('http://localhost:3001/logout', { withCredentials: true });
             setDisplayDeco(false);
-            alert('Vous êtes déconnecté');
+            Swal.fire({
+              title: "Voulez-vous vraiment vous déconnecter",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#3085d6",
+              cancelButtonColor: "#d33",
+              confirmButtonText: "Oui"
+            }).then((result) => {
+              if (result.isConfirmed) {
+                Swal.fire({
+                  title: "Vous êtes déconnecté",
+                  icon: "success"
+                }).then((result)=>{
+                  if(result.isConfirmed){
+                    window.location.href = '/'
+                  }
+                })
+              }
+            });
           } catch (error) {
-            alert('Vous devez vous connecter avant de vous déconnecter');
+            alert(error);
           }
         }}>
           Se déconnecter
