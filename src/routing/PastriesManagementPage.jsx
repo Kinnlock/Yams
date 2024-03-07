@@ -7,6 +7,7 @@ import ModifPastries from '../components/ModifPastries';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import { Link } from 'react-router-dom';
+import ErrorPage from '../components/ErrorPage';
 
 const PastriesManagementPage = ({ setDisplayDeco }) => {
     const [pastries, setPastries] = useState([]);
@@ -216,23 +217,7 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
         }
     }
     else {
-        return (
-            <>
-                <h1>401 Accès interdit</h1>
-                <Link to={'/game'}>
-                    <Button
-                        label="Retour au jeu"
-                        width="120px"
-                        height="40px"
-                        color="antiquewhite"
-                        backgroundColor="#A3241A"
-                        borderRadius="15px"
-                        fontSize="0.9em"
-                        margin="15px"
-                    />
-                </Link>
-            </>
-        )
+        return <ErrorPage message={"401 Interdit"}></ErrorPage>
     }
 };
 
