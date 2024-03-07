@@ -76,3 +76,9 @@ table {
     left: 68%;
     z-index: 50;
 }
+th{
+    color: #214145 !important;
+}
+tr{
+    font-weight: 600 !important;
+}
