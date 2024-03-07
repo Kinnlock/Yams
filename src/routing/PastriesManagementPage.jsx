@@ -20,53 +20,58 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
         quantity: 1,
         image: ''
     });
+    const [files, setFiles] = useState(null);
     const [showError, setShowError] = useState(false); // Nouvel état pour contrôler l'affichage de l'ErrorPage
+
+    const handleFileChange = (e) => {
+        setFiles(e.target.files[0])
+    }
 
     const deletePastry = (id) => {
         Swal.fire({
-          title: "Attention !",
-          text: "Cette action est irréversible",
-          icon: "warning",
-          showCancelButton: true,
-          background: "#1B5959",
-          color:"antiquewhite",
-          confirmButtonColor: '#052E33',
-          confirmButtonTextColor: 'antiquewhite',
-          cancelButtonColor: "#A3241A",
-          confirmButtonText: "Je confirme",
-          cancelButtonText : "Annuler",
-          width: "350px"
+            title: "Attention !",
+            text: "Cette action est irréversible",
+            icon: "warning",
+            showCancelButton: true,
+            background: "#1B5959",
+            color: "antiquewhite",
+            confirmButtonColor: '#052E33',
+            confirmButtonTextColor: 'antiquewhite',
+            cancelButtonColor: "#A3241A",
+            confirmButtonText: "Je confirme",
+            cancelButtonText: "Annuler",
+            width: "350px"
         }).then(async (result) => {
-          if (result.isConfirmed) {
-            try {
-              const response = await axios.delete(`http://localhost:3001/api/pastry/${id}`, { withCredentials: true });
-              console.log(response);
-              const updatedResponse = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
-              setPastries(updatedResponse.data);
-              Swal.fire({
-                title: "La suppression a bien été effectuée",
-                icon: "success",
-                iconColor: "#042326",
-                background: "#1B5959",
-                color:"antiquewhite",
-                confirmButtonColor: '#052E33',
-                confirmButtonTextColor: 'antiquewhite',
-                width: "350px"
-              });
-            } catch (error) {
-              console.error('Error delete pastry:', error);
-              Swal.fire({
-                title: "Erreur",
-                text: "Une erreur est survenue lors de la suppression de la pâtisserie",
-                icon: "error",
-                background: "#1B5959",
-                color:"antiquewhite",
-                confirmButtonColor: '#052E33',
-                confirmButtonTextColor: 'antiquewhite',
-              });
+            if (result.isConfirmed) {
+                try {
+                    const response = await axios.delete(`http://localhost:3001/api/pastry/${id}`, { withCredentials: true });
+                    console.log(response);
+                    const updatedResponse = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
+                    setPastries(updatedResponse.data);
+                    Swal.fire({
+                        title: "La suppression a bien été effectuée",
+                        icon: "success",
+                        iconColor: "#042326",
+                        background: "#1B5959",
+                        color: "antiquewhite",
+                        confirmButtonColor: '#052E33',
+                        confirmButtonTextColor: 'antiquewhite',
+                        width: "350px"
+                    });
+                } catch (error) {
+                    console.error('Error delete pastry:', error);
+                    Swal.fire({
+                        title: "Erreur",
+                        text: "Une erreur est survenue lors de la suppression de la pâtisserie",
+                        icon: "error",
+                        background: "#1B5959",
+                        color: "antiquewhite",
+                        confirmButtonColor: '#052E33',
+                        confirmButtonTextColor: 'antiquewhite',
+                    });
+                }
             }
-          }
-        });      
+        });
     };
 
     const modifHandleSubmit = async () => {
@@ -89,6 +94,22 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
             console.error('Error adding pastry:', error);
         }
     }
+
+    const handleUpload = async () => {
+        const formData = new FormData();
+        formData.append('image', files);
+        formData.append('pastry', JSON.stringify({ name: "a", quantity: 1 }));
+        try {
+          const res = await axios.post(`http://localhost:3001/api/pastry`, formData, {
+            withCredentials: true,
+            headers: { "content-type": "multipart/form-data" }
+          });
+          console.log(res.data);
+        } catch (error) {
+          console.error("Erreur lors de l'appel API :", error);
+          // Gérer l'erreur côté client
+        }
+      };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -156,20 +177,28 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
                 setIsConnected(true)
             } catch (error) {
                 setIsConnected(false);
-                setShowError(true); 
+                setShowError(true);
             }
         };
         fetchData();
     }, []);
 
     if (showError) {
-        return <ErrorPage message={"401 Interdit"}></ErrorPage>; 
+        return <ErrorPage message={"401 Interdit"}></ErrorPage>;
     }
 
     if (isConnected) {
         if (displayAdd === false) {
             return (
+
                 <div className="PastriesManagementPage">
+                    <input
+                        type="file" onChange={handleFileChange}
+                        accept="image/jpeg, image/jpg, image/png"
+                    />
+                    <button onClick={handleUpload}>Upload</button>
+
+
                     <div className="retour-button">
                         <Link to="/game">
                             <Button
