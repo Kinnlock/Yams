@@ -21,17 +21,27 @@ function App() {
             await axios.get('http://localhost:3001/logout', { withCredentials: true });
             setDisplayDeco(false);
             Swal.fire({
-              title: "Voulez-vous vraiment vous déconnecter",
+              title: "Voulez-vous vraiment vous déconnecter ?",
               icon: "warning",
+              background: "#1B5959",
+              color: "antiquewhite",
               showCancelButton: true,
-              confirmButtonColor: "#3085d6",
-              cancelButtonColor: "#d33",
-              confirmButtonText: "Oui"
+              confirmButtonColor: "#052E33",
+              confirmButtonTextColor: 'antiquewhite',
+              cancelButtonColor: "#A3241A",
+              confirmButtonText: "Oui",
+              width: "400px"
             }).then((result) => {
               if (result.isConfirmed) {
                 Swal.fire({
                   title: "Vous êtes déconnecté",
-                  icon: "success"
+                  icon: "success",
+                  iconColor: "#042326",
+                  background: "#1B5959",
+                  color: "antiquewhite",
+                  width: "250px",
+                  confirmButtonColor: '#052E33',
+                  confirmButtonTextColor: 'antiquewhite',
                 }).then((result)=>{
                   if(result.isConfirmed){
                     window.location.href = '/'

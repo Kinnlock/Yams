@@ -31,21 +31,30 @@ const LoginPage = ({ setDisplayDeco }) => {
         console.log(response);
         setDisplayDeco(true);
         Swal.fire({
-          title: 'Bravo,',
-          text: 'Vous êtes connecté',
-          icon: 'success',
-        })
-        .then((result) => {
+          title: "Connexion réussie",
+          icon: "success",
+          iconColor: "#042326",
+          background: "#1B5959",
+          customClass: {
+              title: 'swal-title',
+            },
+          showConfirmButton: false,
+          timer: 1500,
+          width: "350px"
+        }).then((result) => {
           if (result.isConfirmed) {
             window.location.href = '/game'
           }
       });
     }} catch (error) {
-      setError("Une erreur s'est produite lors de la connexion.");
+      setError("La connexion a échoué");
       Swal.fire({
-        title: 'Erreur',
+        title: "Erreur",
         text: error,
+        background: "#1B5959",
+        color:"antiquewhite",
         icon: 'error',
+        width: "400px"
       })
     };
   }

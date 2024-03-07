@@ -94,7 +94,6 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
                 color: "antiquewhite",
                 customClass: {
                     title: 'swal-title',
-                    content: 'swal2-content',
                   },
                 confirmButtonColor: '#052E33', // Couleur de fond du bouton de confirmation
                 confirmButtonTextColor: 'antiquewhite', // Couleur du texte du bouton de confirmation
