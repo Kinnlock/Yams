@@ -22,35 +22,49 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
     });
     const deletePastry = (id) => {
         Swal.fire({
-            title: "Êtes-vous sûr ?",
-            text: "Cette action est irréversible",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Je suis sûre"
+          title: "Attention !",
+          text: "Cette action est irréversible",
+          icon: "warning",
+          showCancelButton: true,
+          background: "#1B5959",
+          color:"antiquewhite",
+          confirmButtonColor: '#052E33',
+          confirmButtonTextColor: 'antiquewhite',
+          cancelButtonColor: "#A3241A",
+          confirmButtonText: "Je confirme",
+          cancelButtonText : "Annuler",
+          width: "350px"
         }).then(async (result) => {
-            if (result.isConfirmed) {
-                try {
-                    const response = await axios.delete(`http://localhost:3001/api/pastry/${id}`, { withCredentials: true });
-                    console.log(response);
-                    const updatedResponse = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
-                    setPastries(updatedResponse.data);
-                    Swal.fire({
-                        title: "Supprimé",
-                        text: "La pâtisserie a bien été supprimée",
-                        icon: "success"
-                    });
-                } catch (error) {
-                    console.error('Error delete pastry:', error);
-                    Swal.fire({
-                        title: "Erreur",
-                        text: "Une erreur est survenue lors de la suppression de la pâtisserie",
-                        icon: "error"
-                    });
-                }
+          if (result.isConfirmed) {
+            try {
+              const response = await axios.delete(`http://localhost:3001/api/pastry/${id}`, { withCredentials: true });
+              console.log(response);
+              const updatedResponse = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
+              setPastries(updatedResponse.data);
+              Swal.fire({
+                title: "La suppression a bien été effectuée",
+                icon: "success",
+                iconColor: "#042326",
+                background: "#1B5959",
+                color:"antiquewhite",
+                confirmButtonColor: '#052E33',
+                confirmButtonTextColor: 'antiquewhite',
+                width: "350px"
+              });
+            } catch (error) {
+              console.error('Error delete pastry:', error);
+              Swal.fire({
+                title: "Erreur",
+                text: "Une erreur est survenue lors de la suppression de la pâtisserie",
+                icon: "error",
+                background: "#1B5959",
+                color:"antiquewhite",
+                confirmButtonColor: '#052E33',
+                confirmButtonTextColor: 'antiquewhite',
+              });
             }
-        });
+          }
+        });      
     };
 
     const modifHandleSubmit = async () => {
@@ -58,6 +72,7 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
             let id = currentPastry.id
             const response = await axios.put(`http://localhost:3001/api/pastry/${id}`, currentPastry, { withCredentials: true });
 
+            console.log('Pâtisserie ajouté:', response.data);
 
             setNewPastry({
                 name: '',
