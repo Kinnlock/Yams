@@ -70,3 +70,9 @@ table {
     background-color: #052E33;
     color: antiquewhite;
 }
+.retour-button{
+    position: absolute;
+    top: 8.5%;
+    left: 68%;
+    z-index: 50;
+}

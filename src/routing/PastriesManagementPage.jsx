@@ -6,6 +6,7 @@ import AddPastryForm from '../components/AddPastries';
 import ModifPastries from '../components/ModifPastries';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import { Link } from 'react-router-dom';
 
 const PastriesManagementPage = ({setDisplayDeco}) => {
     const [pastries, setPastries] = useState([]);
@@ -142,6 +143,21 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
     if (displayAdd === false) {
         return (
             <div className="PastriesManagementPage">
+                <div className="retour-button">
+                    <Link to="/game">
+                        <Button 
+                        label="Retour au jeu"
+                        width="130px"
+                        height="50px"
+                        color="antiquewhite"
+                        backgroundColor="#052E33"
+                        borderRadius="15px"
+                        fontSize="0.9em"
+                        margin="25px"
+                        />
+                    </Link>
+                </div>
+
                     <h1 className="title">Gestion du stock</h1>
                     <button className='ajout-btn btn' onClick={() => setDisplayAdd(!displayAdd)}>Ajouter une patisserie</button>
                     {error && <p className="error">An error occurred: {error.message}</p>}

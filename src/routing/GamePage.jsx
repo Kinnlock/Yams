@@ -7,10 +7,13 @@ import axios from 'axios';
 
 const GamePage = ({setDisplayDeco}) => {
 
+  const [isConnected, setIsConnected] = useState(false);
+
   axios.get('http://localhost:3001/me', {
     withCredentials: true
   })
   .then(response => {
+    setIsConnected(true)
     setDisplayDeco(true);
   })
   .catch(error => {
@@ -37,20 +40,37 @@ const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = u
 
     return (
       <>
+      {isConnected && (        
         <div className="management-button">
-            <Link to="/management">
-              <Button 
-                label="Gérer les pâtisseries"
-                width="130px"
-                height="50px"
-                color="antiquewhite"
-                backgroundColor="#052E33"
-                borderRadius="15px"
-                fontSize="0.9em"
-                margin="25px"
-              />
-            </Link>
-        </div>
+          <Link to="/management">
+            <Button 
+              label="Gérer les pâtisseries"
+              width="130px"
+              height="50px"
+              color="antiquewhite"
+              backgroundColor="#052E33"
+              borderRadius="15px"
+              fontSize="0.9em"
+              margin="25px"
+            />
+          </Link>
+        </div>)}
+        {!isConnected && (        
+        <div className="management-button">
+          <Link to="/">
+            <Button 
+              label="Se connecter"
+              width="130px"
+              height="50px"
+              color="antiquewhite"
+              backgroundColor="#052E33"
+              borderRadius="15px"
+              fontSize="0.9em"
+              margin="25px"
+            />
+          </Link>
+        </div>)}
+
 
         <div className='container'>
           
