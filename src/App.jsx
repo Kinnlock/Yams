@@ -61,7 +61,7 @@ function App() {
         </button>
       )}
         <Routes>
-         <Route path="/game" element={<GamePage></GamePage>}></Route>
+         <Route path="/game" element={<GamePage setDisplayDeco={setDisplayDeco}></GamePage>}></Route>
          <Route path="/" element={<LoginPage setDisplayDeco={setDisplayDeco}></LoginPage>}></Route>
          <Route path="/management" element={<PastriesManagementPage setDisplayDeco={setDisplayDeco}></PastriesManagementPage>}></Route>
         </Routes>

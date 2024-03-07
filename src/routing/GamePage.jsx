@@ -3,8 +3,20 @@ import Prize from '../components/Prize';
 import { useGetPastriesQuery } from '../storage/game';
 import Button from '../components/Button';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-const GamePage = () => {
+const GamePage = ({setDisplayDeco}) => {
+
+  axios.get('http://localhost:3001/me', {
+    withCredentials: true
+  })
+  .then(response => {
+    setDisplayDeco(true);
+  })
+  .catch(error => {
+    setDisplayDeco(false);
+  });
+
 
 const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = useGetPastriesQuery();
   const [resultat, setResultat] = useState([]); 
