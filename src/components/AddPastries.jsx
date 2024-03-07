@@ -1,4 +1,6 @@
 import Button from './Button';
+import Swal from 'sweetalert2'
+
 const AddPastryForm = ({ newPastry, setNewPastry, handleSubmit, displayAdd, setDisplayAdd }) => {
     return (
         <div className='add-pastries'>

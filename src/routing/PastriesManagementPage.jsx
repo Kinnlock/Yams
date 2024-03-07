@@ -4,6 +4,8 @@ import "../css/PastriesManagementPage.css";
 import Button from '../components/Button';
 import AddPastryForm from '../components/AddPastries';
 import ModifPastries from '../components/ModifPastries';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 const PastriesManagementPage = ({setDisplayDeco}) => {
     const [pastries, setPastries] = useState([]);
@@ -51,7 +53,7 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
+
         try {
             const response = await axios.post ('http://localhost:3001/api/pastry', newPastry, { withCredentials: true });
 
@@ -65,9 +67,40 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
 
             const updatedResponse = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
             setPastries(updatedResponse.data);
+
+            Swal.fire({
+                position: "top-end",
+                title: "Votre pâtisserie a bien été ajoutée !",
+                icon: "success",
+                iconColor: "#042326",
+                background: "#1B5959",
+                customClass: {
+                    title: 'swal-title',
+                  },
+                showConfirmButton: false,
+                timer: 1500,
+                width: "400px"
+              })
+
         }
         catch (error) {
             console.error('Error adding pastry:', error);
+
+            Swal.fire({
+                title: "Oups !",
+                text: "Quelque chose n'a pas fonctionné. Veuillez recommencer.",
+                icon: 'error',
+                background: "#1B5959",
+                color: "antiquewhite",
+                customClass: {
+                    title: 'swal-title',
+                    content: 'swal2-content',
+                  },
+                confirmButtonColor: '#052E33', // Couleur de fond du bouton de confirmation
+                confirmButtonTextColor: 'antiquewhite', // Couleur du texte du bouton de confirmation
+                confirmButtonText: 'Fermer cette fenêtre',
+                width: "400px"
+            });
         }
     };
 
