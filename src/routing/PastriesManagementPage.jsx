@@ -18,6 +18,7 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
         quantity : 1,
         image : ''
     });
+<<<<<<< HEAD
     const deletePastry = async (id) => {
         try {
             const response = await axios.delete(`http://localhost:3001/api/pastry/${id}`, { withCredentials: true })
@@ -30,6 +31,40 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
         }
 
     }
+=======
+    const deletePastry = (id) => {
+        Swal.fire({
+          title: "Êtes-vous sûr ?",
+          text: "Cette action est irréversible",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Je suis sûre"
+        }).then(async (result) => {
+          if (result.isConfirmed) {
+            try {
+              const response = await axios.delete(`http://localhost:3001/api/pastry/${id}`, { withCredentials: true });
+              console.log(response);
+              const updatedResponse = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
+              setPastries(updatedResponse.data);
+              Swal.fire({
+                title: "Supprimé",
+                text: "La pâtisserie a bien été supprimée",
+                icon: "success"
+              });
+            } catch (error) {
+              console.error('Error delete pastry:', error);
+              Swal.fire({
+                title: "Erreur",
+                text: "Une erreur est survenue lors de la suppression de la pâtisserie",
+                icon: "error"
+              });
+            }
+          }
+        });
+      };
+>>>>>>> bc2a7ad082c23ce7117565c6bac4b7185f959367
 
     const modifHandleSubmit = async () => {
         try {
