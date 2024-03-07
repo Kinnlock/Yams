@@ -1,4 +1,4 @@
-import "./LoginPage.css";
+import "../css/LoginPage.css";
 import { useState } from "react";
 import Button from "../components/Button";
 import axios from "axios";

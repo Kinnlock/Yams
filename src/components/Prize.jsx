@@ -1,6 +1,6 @@
 import { useGetWinQuery } from "../storage/game.jsx";
 import React from "react";
-import "./Prize.css";
+import "../css/Prize.css";
 
 function Prize({ quantity }) {
   const { data: wins, error: winError, isLoading: winIsLoading } = useGetWinQuery(quantity);

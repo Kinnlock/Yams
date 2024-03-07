@@ -1,9 +1,9 @@
-import './App.css';
-import Game from './components/game';
+import './css/App.css';
+import GamePage from './routing/GamePage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginPage from './routing/LoginPage';
 import PastriesManagementPage from './routing/PastriesManagementPage';
-import './routing/PastriesManagementPage.css';
+import './css/PastriesManagementPage.css';
 import axios from 'axios';
 import { useState } from 'react';
 
@@ -28,7 +28,7 @@ function App() {
         </button>
       )}
         <Routes>
-         <Route path="/game" element={<Game></Game>}></Route>
+         <Route path="/game" element={<GamePage></GamePage>}></Route>
          <Route path="/" element={<LoginPage setDisplayDeco={setDisplayDeco}></LoginPage>}></Route>
          <Route path="/management" element={<PastriesManagementPage setDisplayDeco={setDisplayDeco}></PastriesManagementPage>}></Route>
         </Routes>

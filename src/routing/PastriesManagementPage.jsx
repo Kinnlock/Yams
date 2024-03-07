@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './PastriesManagementPage.css';
+import "../css/PastriesManagementPage.css";
 import Button from '../components/Button';
 import AddPastryForm from '../components/AddPastries';
 import ModifPastries from '../components/ModifPastries';
