@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 const PastriesManagementPage = ({setDisplayDeco}) => {
     const [pastries, setPastries] = useState([]);
     const [error, setError] = useState(null);
+    const [isConnected, setIsConnected] = useState(false);
     const [currentPastry, setCurrentPastry] = useState(undefined);
     const [displayAdd, setDisplayAdd] = useState(false);
     const [newPastry, setNewPastry] = useState({
@@ -134,100 +135,90 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
                 const response = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
                 setPastries(response.data);
                 setDisplayDeco(true);
-                setError(error);
+                setIsConnected(true)
             } catch (error) {
-                Swal.fire({
-                    title: "Oups !",
-                    text: "Veuillez d'abord vous connecter.",
-                    icon: 'error',
-                    background: "#1B5959",
-                    color: "antiquewhite",
-                    customClass: {
-                        title: 'swal-title',
-                      },
-                    confirmButtonColor: '#052E33',
-                    confirmButtonTextColor: 'antiquewhite',
-                    confirmButtonText: 'Aller à la page de connection',
-                    width: "400px"
-                }).then((response) => {
-                    if(response.isConfirmed){
-                        window.location.href = '/'
-                    }
-                })
+                setIsConnected(false)
             }
         };
         fetchData();
     }, []);
 
-    if (displayAdd === false) {
-        return (
-            <div className="PastriesManagementPage">
-                <div className="retour-button">
-                    <Link to="/game">
-                        <Button 
-                        label="Retour au jeu"
-                        width="130px"
-                        height="50px"
-                        color="antiquewhite"
-                        backgroundColor="#052E33"
-                        borderRadius="15px"
-                        fontSize="0.9em"
-                        margin="25px"
-                        />
-                    </Link>
-                </div>
+    if(isConnected){
+        if (displayAdd === false) {
+            return (
+                <div className="PastriesManagementPage">
+                    <div className="retour-button">
+                        <Link to="/game">
+                            <Button 
+                            label="Retour au jeu"
+                            width="130px"
+                            height="50px"
+                            color="antiquewhite"
+                            backgroundColor="#052E33"
+                            borderRadius="15px"
+                            fontSize="0.9em"
+                            margin="25px"
+                            />
+                        </Link>
+                    </div>
 
-                    <h1 className="title">Gestion du stock</h1>
-                    <button className='ajout-btn btn' onClick={() => setDisplayAdd(!displayAdd)}>Ajouter une patisserie</button>
-                    {error && <p className="error">An error occurred: {error.message}</p>}
+                        <h1 className="title">Gestion du stock</h1>
+                        <button className='ajout-btn btn' onClick={() => setDisplayAdd(!displayAdd)}>Ajouter une patisserie</button>
+                        {error && <p className="error">An error occurred: {error.message}</p>}
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th className="column-name">Nom</th>
-                            <th className="column-name">Quantité</th>
-                            <th className="column-name">Quantité gagnée</th>
-                            <th className="column-name">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {pastries.map(pastrie => (
-                            <tr key={pastrie.id}>
-                                <td>{pastrie.name}</td>
-                                <td>{pastrie.quantity}</td>
-                                <td>{pastrie.quantityWon}</td>
-                                <td><Button onClick={() => handleModifications(pastrie)}
-                                            label="Modifier"
-                                            width="90px"
-                                            height="30px"
-                                            color="antiquewhite"
-                                            backgroundColor="#052E33"
-                                            borderRadius="15px"
-                                            fontSize="0.9em"
-                                            margin="15px"
-                                    />
-                                    <Button onClick={() => deletePastry(pastrie.id)}
-                                            label="Supprimer"
-                                            width="90px"
-                                            height="30px"
-                                            color="antiquewhite"
-                                            backgroundColor="#A3241A"
-                                            borderRadius="15px"
-                                            fontSize="0.9em"
-                                            margin="15px"
-                                    />
-                                </td>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th className="column-name">Nom</th>
+                                <th className="column-name">Quantité</th>
+                                <th className="column-name">Quantité gagnée</th>
+                                <th className="column-name">Action</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-        );
-    } else if (displayAdd === true && currentPastry === undefined) {
-        return <AddPastryForm newPastry={newPastry} setNewPastry={setNewPastry} handleSubmit={handleSubmit} displayAdd={displayAdd} setDisplayAdd={setDisplayAdd}></AddPastryForm>
+                        </thead>
+                        <tbody>
+                            {pastries.map(pastrie => (
+                                <tr key={pastrie.id}>
+                                    <td>{pastrie.name}</td>
+                                    <td>{pastrie.quantity}</td>
+                                    <td>{pastrie.quantityWon}</td>
+                                    <td><Button onClick={() => handleModifications(pastrie)}
+                                                label="Modifier"
+                                                width="90px"
+                                                height="30px"
+                                                color="antiquewhite"
+                                                backgroundColor="#052E33"
+                                                borderRadius="15px"
+                                                fontSize="0.9em"
+                                                margin="15px"
+                                        />
+                                        <Button onClick={() => deletePastry(pastrie.id)}
+                                                label="Supprimer"
+                                                width="90px"
+                                                height="30px"
+                                                color="antiquewhite"
+                                                backgroundColor="#A3241A"
+                                                borderRadius="15px"
+                                                fontSize="0.9em"
+                                                margin="15px"
+                                        />
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            );
+        } else if (displayAdd === true && currentPastry === undefined) {
+            return <AddPastryForm newPastry={newPastry} setNewPastry={setNewPastry} handleSubmit={handleSubmit} displayAdd={displayAdd} setDisplayAdd={setDisplayAdd}></AddPastryForm>
+        }
+        else if (displayAdd === true && currentPastry) {
+            return <ModifPastries currentPastry={currentPastry} setCurrentPastry={setCurrentPastry} modifHandleSubmit={modifHandleSubmit} displayAdd={displayAdd} setDisplayAdd={setDisplayAdd}></ModifPastries>
+        }
     }
-    else if (displayAdd === true && currentPastry) {
-        return <ModifPastries currentPastry={currentPastry} setCurrentPastry={setCurrentPastry} modifHandleSubmit={modifHandleSubmit} displayAdd={displayAdd} setDisplayAdd={setDisplayAdd}></ModifPastries>
+    else{
+        return(
+            <h1>401 Accès interdit</h1>
+        )
     }
 };
 
