@@ -84,33 +84,34 @@ const LoginPage = ({ setDisplayDeco }) => {
         </div>
 
         {error && <p className="error">{error}</p>}
-
-        <Button
-          label="Se connecter"
-          type="submit"
-          width="120px"
-          height="40px"
-          color="antiquewhite"
-          backgroundColor="#052E33"
-          borderRadius="15px"
-          fontSize="1em"
-          margin="25px"
-        />
-      </form>
-      <p>Ou</p>
-      <Link to="/game">
-        <Button
-            label="Continuer sans se connecter"
+        <div className="connect">
+          <Button
+            label="Se connecter"
             type="submit"
-            width="140px"
-            height="50px"
+            width="120px"
+            height="40px"
             color="antiquewhite"
             backgroundColor="#052E33"
             borderRadius="15px"
             fontSize="1em"
             margin="25px"
           />
-      </Link>
+          <p>Ou</p>
+          <Link to="/game">
+            <Button
+                label="Continuer sans se connecter"
+                type="submit"
+                width="140px"
+                height="50px"
+                color="antiquewhite"
+                backgroundColor="#052E33"
+                borderRadius="15px"
+                fontSize="1em"
+                margin="25px"
+              />
+          </Link>
+        </div>
+      </form>
     </div>
   );
 }
