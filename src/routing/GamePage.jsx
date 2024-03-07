@@ -27,18 +27,18 @@ const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = u
       <>
         <div className="management-button">
             <Link to="/management">
-            <Button 
-              label="Gérer les pâtisseries"
-              width="130px"
-              height="30px"
-              color="antiquewhite"
-              backgroundColor="#052E33"
-              borderRadius="15px"
-              fontSize="0.9em"
-              margin="25px"
-            />
+              <Button 
+                label="Gérer les pâtisseries"
+                width="130px"
+                height="50px"
+                color="antiquewhite"
+                backgroundColor="#052E33"
+                borderRadius="15px"
+                fontSize="0.9em"
+                margin="25px"
+              />
             </Link>
-          </div>
+        </div>
 
         <div className='container'>
           

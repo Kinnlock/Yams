@@ -18,8 +18,6 @@ function App() {
       {displayDeco && (
         <button className='btn deco-btn' onClick={async () => {
           try {
-            await axios.get('http://localhost:3001/logout', { withCredentials: true });
-            setDisplayDeco(false);
             Swal.fire({
               title: "Voulez-vous vraiment vous déconnecter ?",
               icon: "warning",
@@ -33,6 +31,7 @@ function App() {
               width: "400px"
             }).then((result) => {
               if (result.isConfirmed) {
+                axios.get('http://localhost:3001/logout', { withCredentials: true });
                 Swal.fire({
                   title: "Vous êtes déconnecté",
                   icon: "success",
@@ -45,6 +44,11 @@ function App() {
                 }).then((result)=>{
                   if(result.isConfirmed){
                     window.location.href = '/'
+                    setDisplayDeco(false);
+                  }
+                  else{
+                    window.location.href = '/'
+                    setDisplayDeco(false);
                   }
                 })
               }

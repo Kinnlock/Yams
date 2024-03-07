@@ -114,10 +114,26 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
                 const response = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
                 setPastries(response.data);
                 setDisplayDeco(true);
-            } catch (error) {
-                alert("Veuillez d'abord vous connecter")
-                window.location.href = '/'
                 setError(error);
+            } catch (error) {
+                Swal.fire({
+                    title: "Oups !",
+                    text: "Veuillez d'abord vous connecter.",
+                    icon: 'error',
+                    background: "#1B5959",
+                    color: "antiquewhite",
+                    customClass: {
+                        title: 'swal-title',
+                      },
+                    confirmButtonColor: '#052E33',
+                    confirmButtonTextColor: 'antiquewhite',
+                    confirmButtonText: 'Aller à la page de connection',
+                    width: "400px"
+                }).then((response) => {
+                    if(response.isConfirmed){
+                        window.location.href = '/'
+                    }
+                })
             }
         };
         fetchData();
