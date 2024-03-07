@@ -3,7 +3,6 @@ import Prize from '../components/Prize';
 import { useGetPastriesQuery } from '../storage/game';
 import Button from '../components/Button';
 import { Link } from 'react-router-dom';
-import "../css/game.css";
 
 const GamePage = () => {
 
