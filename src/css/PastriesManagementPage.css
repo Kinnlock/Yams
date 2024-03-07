@@ -52,7 +52,7 @@ table {
 }
 
 .deco-btn{
-    position: fixed;
+    position: absolute;
     top: 10%;
     right: 80%;
     z-index: 50;

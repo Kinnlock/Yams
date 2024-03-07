@@ -2,6 +2,7 @@ import "../css/LoginPage.css";
 import { useState } from "react";
 import Button from "../components/Button";
 import axios from "axios";
+import Swal from 'sweetalert2'
 
 const LoginPage = ({ setDisplayDeco }) => {
   const [email, setEmail] = useState("");
@@ -29,13 +30,25 @@ const LoginPage = ({ setDisplayDeco }) => {
       if (response.statusText === "OK") {
         console.log(response);
         setDisplayDeco(true);
-        window.location.href = '/game'
-      }
-    } catch (error) {
-      console.error(error);
+        Swal.fire({
+          title: 'Bravo,',
+          text: 'Vous êtes connecté',
+          icon: 'success',
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            window.location.href = '/game'
+          }
+      });
+    }} catch (error) {
       setError("Une erreur s'est produite lors de la connexion.");
-    }
-  };
+      Swal.fire({
+        title: 'Erreur',
+        text: error,
+        icon: 'error',
+      })
+    };
+  }
 
   return (
     <div className="login-page">
@@ -74,6 +87,5 @@ const LoginPage = ({ setDisplayDeco }) => {
       </form>
     </div>
   );
-};
-
+}
 export default LoginPage;
