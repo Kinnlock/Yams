@@ -62,7 +62,8 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
                 confirmButtonTextColor: 'antiquewhite',
               });
             }
-        });
+          }
+        });      
     };
 
     const modifHandleSubmit = async () => {
