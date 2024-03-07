@@ -95,8 +95,8 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
                 customClass: {
                     title: 'swal-title',
                   },
-                confirmButtonColor: '#052E33', // Couleur de fond du bouton de confirmation
-                confirmButtonTextColor: 'antiquewhite', // Couleur du texte du bouton de confirmation
+                confirmButtonColor: '#052E33',
+                confirmButtonTextColor: 'antiquewhite',
                 confirmButtonText: 'Fermer cette fenêtre',
                 width: "400px"
             });

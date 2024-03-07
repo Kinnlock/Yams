@@ -38,8 +38,8 @@ const LoginPage = ({ setDisplayDeco }) => {
           customClass: {
               title: 'swal-title',
             },
-          showConfirmButton: false,
-          timer: 1500,
+          confirmButtonColor: '#052E33',
+          confirmButtonTextColor: 'antiquewhite',
           width: "350px"
         }).then((result) => {
           if (result.isConfirmed) {
