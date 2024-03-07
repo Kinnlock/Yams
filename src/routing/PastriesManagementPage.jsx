@@ -217,7 +217,9 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
         }
     }
     else {
-        return <ErrorPage message={"401 Interdit"}></ErrorPage>
+        setTimeout(() => {
+            return <ErrorPage message={"401 Interdit"}></ErrorPage>
+        }, 2000);
     }
 };
 

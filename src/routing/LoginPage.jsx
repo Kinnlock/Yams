@@ -128,9 +128,9 @@ const LoginPage = ({ setDisplayDeco }) => {
     );
   }
   else{
-    return(
-       <ErrorPage message={"Vous êtes déjà connecté"}></ErrorPage>
-    )
+      setTimeout(() => {
+        return <ErrorPage message={"Vous êtes déjà connecté"}></ErrorPage>
+      }, 2000);
   }
 }
 export default LoginPage;
