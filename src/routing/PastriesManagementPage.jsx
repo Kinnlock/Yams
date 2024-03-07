@@ -20,6 +20,8 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
         quantity: 1,
         image: ''
     });
+    const [showError, setShowError] = useState(false); // Nouvel état pour contrôler l'affichage de l'ErrorPage
+
     const deletePastry = (id) => {
         Swal.fire({
           title: "Attention !",
@@ -153,11 +155,16 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
                 setDisplayDeco(true);
                 setIsConnected(true)
             } catch (error) {
-                setIsConnected(false)
+                setIsConnected(false);
+                setShowError(true); 
             }
         };
         fetchData();
     }, []);
+
+    if (showError) {
+        return <ErrorPage message={"401 Interdit"}></ErrorPage>; 
+    }
 
     if (isConnected) {
         if (displayAdd === false) {
@@ -230,11 +237,6 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
         else if (displayAdd === true && currentPastry) {
             return <ModifPastries currentPastry={currentPastry} setCurrentPastry={setCurrentPastry} modifHandleSubmit={modifHandleSubmit} displayAdd={displayAdd} setDisplayAdd={setDisplayAdd}></ModifPastries>
         }
-    }
-    else {
-        setTimeout(() => {
-            return <ErrorPage message={"401 Interdit"}></ErrorPage>
-        }, 2000);
     }
 };
 

@@ -1,5 +1,5 @@
 import "../css/LoginPage.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "../components/Button";
 import axios from "axios";
 import Swal from 'sweetalert2'
@@ -12,15 +12,17 @@ const LoginPage = ({ setDisplayDeco }) => {
   const [error, setError] = useState("");
   const [isConnected, setIsConnected] = useState(false);
 
-  axios.get('http://localhost:3001/me', {
-    withCredentials: true
-  })
-  .then(response => {
-    setIsConnected(true);
-  })
-  .catch(error => {
-    setIsConnected(false);
-  });
+  useEffect(() => {
+    axios.get('http://localhost:3001/me', {
+      withCredentials: true
+    })
+    .then(response => {
+      setIsConnected(true);
+    })
+    .catch(error => {
+      setIsConnected(false);
+    });
+  }, []);
 
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -73,6 +75,7 @@ const LoginPage = ({ setDisplayDeco }) => {
       })
     };
   }
+
   if(!isConnected){
     return (
       <div className="login-page">
@@ -126,11 +129,9 @@ const LoginPage = ({ setDisplayDeco }) => {
         </form>
       </div>
     );
-  }
-  else{
-      setTimeout(() => {
-        return <ErrorPage message={"Vous êtes déjà connecté"}></ErrorPage>
-      }, 2000);
+  } else {
+      return <ErrorPage message={"Vous êtes déjà connecté"}></ErrorPage>;
   }
 }
+
 export default LoginPage;
