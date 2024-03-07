@@ -49,7 +49,9 @@ const PastriesManagementPage = ({setDisplayDeco}) => {
         }
     }
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        
         try {
             const response = await axios.post ('http://localhost:3001/api/pastry', newPastry, { withCredentials: true });
 
