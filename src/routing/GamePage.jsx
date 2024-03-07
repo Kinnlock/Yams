@@ -4,6 +4,7 @@ import { useGetPastriesQuery } from '../storage/game';
 import Button from '../components/Button';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const GamePage = ({setDisplayDeco}) => {
 
@@ -107,7 +108,32 @@ const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = u
           </div>
         </div>
         
-        {resultat[5] > 0 && <Prize quantity={resultat[5]} />} 
+        {resultat[5] > 0 && 
+        <>
+          <Prize quantity={resultat[5]} /> 
+          <Button 
+              label="Réclamer"
+              width="130px"
+              height="50px"
+              color="antiquewhite"
+              backgroundColor="#052E33"
+              borderRadius="15px"
+              fontSize="0.9em"
+              margin="25px"
+              onClick={()=>
+                Swal.fire({
+                  title: "Logique à venir",
+                  text: "imaginons un lien vers un bon d'achat ou quelque chose",
+                  background: "#1B5959",
+                  color:"antiquewhite",
+                  icon: 'succes',
+                  width: "400px"
+                })
+              }
+            />       
+        </>
+        } 
+
       </>
     );
   }
