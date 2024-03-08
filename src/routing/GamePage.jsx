@@ -47,7 +47,15 @@ const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = u
           setResultat(newResultat);
           setRollCount(rollCount + 1);
         } else {
-          console.log("t'abuses");
+          Swal.fire({
+            title: "Vous avez déjà lancer les dés 3 fois",
+            background: "#1B5959",
+            color:"antiquewhite",
+            icon: 'error',
+            width: "400px",
+            confirmButtonColor: '#052E33',
+            confirmButtonTextColor: 'antiquewhite',
+          })
         }
       };
   
@@ -91,7 +99,7 @@ const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = u
 
           {(resultat[5] < 1 || resultat.length<1) && (
             <Button 
-              label="Lancer le dé"
+              label="Lancer les dés"
               onClick={() => handleClick()}
               width="150px"
               height="40px"
