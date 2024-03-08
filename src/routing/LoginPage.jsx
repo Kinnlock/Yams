@@ -53,7 +53,6 @@ const LoginPage = ({ setDisplayDeco }) => {
               title: 'swal-title',
             },
           confirmButtonColor: '#052E33',
-          confirmButtonTextColor: 'antiquewhite',
           width: "350px"
         }).then((result) => {
           if (result.isConfirmed) {
@@ -70,7 +69,6 @@ const LoginPage = ({ setDisplayDeco }) => {
         icon: 'error',
         width: "400px",
         confirmButtonColor: '#052E33',
-        confirmButtonTextColor: 'antiquewhite',
       })
     };
   }

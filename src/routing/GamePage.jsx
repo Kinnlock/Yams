@@ -49,7 +49,6 @@ const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = u
             icon: 'error',
             width: "350px",
             confirmButtonColor: '#052E33',
-            confirmButtonTextColor: 'antiquewhite',
           })
         }
       };
@@ -144,7 +143,6 @@ const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = u
                   color:"antiquewhite",
                   iconColor: "#042326",
                   confirmButtonColor: '#052E33',
-                  confirmButtonTextColor: 'antiquewhite',
                   width: "400px"
                 })
               }
