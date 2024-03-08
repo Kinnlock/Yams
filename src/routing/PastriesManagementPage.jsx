@@ -18,7 +18,8 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
     const [newPastry, setNewPastry] = useState({
         name: '',
         quantity: 1,
-        image: ''
+        image: '',
+        choise:'',
     });
     const [files, setFiles] = useState(null);
     const [showError, setShowError] = useState(false); // Nouvel état pour contrôler l'affichage de l'ErrorPage
