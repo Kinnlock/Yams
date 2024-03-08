@@ -43,7 +43,6 @@ const LoginPage = ({ setDisplayDeco }) => {
       );
 
       if (response.statusText === "OK") {
-        console.log(response);
         setDisplayDeco(true);
         Swal.fire({
           title: "Connexion réussie",

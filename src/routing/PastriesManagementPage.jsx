@@ -46,7 +46,6 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
             if (result.isConfirmed) {
                 try {
                     const response = await axios.delete(`http://localhost:3001/api/pastry/${id}`, { withCredentials: true });
-                    console.log(response);
                     const updatedResponse = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
                     setPastries(updatedResponse.data);
                     Swal.fire({
@@ -79,8 +78,6 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
         try {
             let id = currentPastry.id
             const response = await axios.put(`http://localhost:3001/api/pastry/${id}`, currentPastry, { withCredentials: true });
-
-            console.log('Pâtisserie ajouté:', response.data);
 
             setNewPastry({
                 name: '',
@@ -128,8 +125,6 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
 
         try {
             const response = await axios.post('http://localhost:3001/api/pastry', newPastry, { withCredentials: true });
-
-            console.log('Pâtisserie ajouté:', response.data);
 
             setNewPastry({
                 name: '',
@@ -193,7 +188,7 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
                 setPastries(response.data);
                 setDisplayDeco(true);
                 setIsConnected(true)
-                console.log(response.data);
+                (response.data);
             } catch (error) {
                 setIsConnected(false);
                 setShowError(true);
