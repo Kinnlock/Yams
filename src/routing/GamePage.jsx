@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 const GamePage = ({setDisplayDeco}) => {
 
   const [isConnected, setIsConnected] = useState(false);
+  const [rollCount, setRollCount] = useState(0);
 
   axios.get('http://localhost:3001/me', {
     withCredentials: true
@@ -38,6 +39,18 @@ const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = u
       const newResultat = result(); 
       setResultat(newResultat); 
     };
+
+    if (pastries) {
+      const handleClick = () => {
+        if (rollCount < 3) {
+          const newResultat = result();
+          setResultat(newResultat);
+          setRollCount(rollCount + 1);
+        } else {
+          console.log("t'abuses");
+        }
+      };
+  
 
     return (
       <>
@@ -173,5 +186,6 @@ function result() {
 //Le dé qui donne un resultat entre 1 et 6
 function de(){
   return Math.floor(Math.random() * (6-1) + 1);
+}
 }
 export default GamePage
