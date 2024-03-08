@@ -41,7 +41,6 @@ const AddPastryForm = ({ newPastry, setNewPastry, handleSubmit, displayAdd, setD
                         type="file" onChange={handleFileChange}
                         accept="image/jpeg, image/jpg, image/png"
                     />
-                    {files!=null && (<button  onClick={handleUpload}>Upload</button>)}
                     {files==null && (<Button type="submit"
                         label="Envoyer"
                         width="80px"
@@ -52,6 +51,7 @@ const AddPastryForm = ({ newPastry, setNewPastry, handleSubmit, displayAdd, setD
                         fontSize="0.8em"
                         margin="15px" />)}
                 </form>
+                        {files!=null && (<button  onClick={handleUpload}>Upload</button>)}
             </div>
         </div>
     );
