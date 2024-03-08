@@ -101,7 +101,7 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
         formData.append('image', files);
         formData.append('pastry', JSON.stringify(newPastry));
         try {
-          const res = await axios.post(`http://localhost:3001/api/pastry`, formData, {
+            const res = await axios.post(`http://localhost:3001/api/pastry`, formData, {
             withCredentials: true,
             headers: { "content-type": "multipart/form-data" }
           });
@@ -169,6 +169,12 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
         setDisplayAdd(!displayAdd);
     }
 
+    function isValidURL(url) {
+        var img = new Image();
+        img.src = url;
+        return img.complete && img.naturalHeight !== 0;
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -229,7 +235,8 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
                             {pastries.map(pastrie => (
                                 <tr key={pastrie.id}>
                                     <td>{pastrie.name}</td>
-                                    <td><img className="table-image" src={"http://localhost:3001/uploads/images/" + pastrie.image} alt={pastrie.name}/></td>
+                                    {pastrie.image != "http://placehold.it/32x32" && (<td><img className="table-image" src={"http://localhost:3001/uploads/images/" + pastrie.image} alt={pastrie.name}/></td>)}
+                                    {pastrie.image == "http://placehold.it/32x32" && (<td><img className="table-image" src={pastrie.image} alt={pastrie.name}/></td>)}
                                     <td>{pastrie.quantity}</td>
                                     <td>{pastrie.quantityWon}</td>
                                     <td><Button onClick={() => handleModifications(pastrie)}
