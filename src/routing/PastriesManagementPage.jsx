@@ -79,6 +79,7 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
             let id = currentPastry.id
             const response = await axios.put(`http://localhost:3001/api/pastry/${id}`, currentPastry, { withCredentials: true });
 
+
             setNewPastry({
                 name: '',
                 quantity: 1,
@@ -125,6 +126,7 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
 
         try {
             const response = await axios.post('http://localhost:3001/api/pastry', newPastry, { withCredentials: true });
+
 
             setNewPastry({
                 name: '',
@@ -188,7 +190,6 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
                 setPastries(response.data);
                 setDisplayDeco(true);
                 setIsConnected(true)
-                (response.data);
             } catch (error) {
                 setIsConnected(false);
                 setShowError(true);
