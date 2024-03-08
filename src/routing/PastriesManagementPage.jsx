@@ -105,7 +105,8 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
             withCredentials: true,
             headers: { "content-type": "multipart/form-data" }
           });
-          console.log(res.data);
+          const updatedResponse = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
+          setPastries(updatedResponse.data);
         } catch (error) {
           console.error("Erreur lors de l'appel API :", error);
         }
