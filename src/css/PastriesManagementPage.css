@@ -1,31 +1,31 @@
-.ajout-btn{
+.ajout-btn {
     position: absolute;
     z-index: 50;
     top: 10%;
     left: 80%;
 }
 
-.add-pastries{
+.add-pastries {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.inputs{
+.inputs {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.input{
-    margin-bottom:1%;
-    margin-top:1%;
+.input {
+    margin-bottom: 1%;
+    margin-top: 1%;
     display: flex;
     flex-direction: column;
     padding: 2%;
-    background-color:rgba(0,0,0,0.1);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .column-name {
@@ -39,19 +39,19 @@ table {
     width: 950px;
 }
 
-.btn{
+.btn {
     width: 150px;
     height: 50px;
     color: antiquewhite;
     background-color: #052E33;
-    border-radius:15px;
-    font-size:0.9em;
-    margin:15px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    margin: 15px;
 
 
 }
 
-.deco-btn{
+.deco-btn {
     position: absolute;
     top: 10%;
     right: 80%;
@@ -70,24 +70,27 @@ table {
     background-color: #052E33;
     color: antiquewhite;
 }
-.retour-button{
+
+.retour-button {
     position: absolute;
     top: 9%;
     left: 68%;
     z-index: 50;
 }
-th{
+
+th {
     color: #214145 !important;
 }
-tr{
+
+tr {
     font-weight: 600 !important;
 }
 
 .table-image {
     max-width: 32px;
     transition: transform 0.3s ease;
-  }
-  
-  .table-image:hover {
+}
+
+.table-image:hover {
     transform: scale(6);
-  }
+}

@@ -99,7 +99,7 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
     const handleUpload = async () => {
         const formData = new FormData();
         formData.append('image', files);
-        formData.append('pastry', JSON.stringify(newPastry));
+        formData.append('pastry', JSON.stringify(newPastry));       
         try {
           const res = await axios.post(`http://localhost:3001/api/pastry`, formData, {
             withCredentials: true,
@@ -107,6 +107,17 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
           });
           const updatedResponse = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
           setPastries(updatedResponse.data);
+          Swal.fire({
+            title: "Votre pâtisserie a bien été ajoutée !",
+            icon: "success",
+            iconColor: "#042326",
+            background: "#1B5959",
+            customClass: {
+                title: 'swal-title',
+              },
+            confirmButtonColor: '#052E33',
+            confirmButtonTextColor: 'antiquewhite',
+            width: "350px"})
         } catch (error) {
           console.error("Erreur lors de l'appel API :", error);
         }
