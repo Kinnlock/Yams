@@ -1,3 +1,4 @@
+//installation des dépendances
 import "../css/LoginPage.css";
 import { useState, useEffect } from "react";
 import Button from "../components/Button";
@@ -12,9 +13,10 @@ const LoginPage = ({ setDisplayDeco }) => {
   const [error, setError] = useState("");
   const [isConnected, setIsConnected] = useState(false);
 
+  //utilisation du hook useEffect pour effectuer une requête GET vers l'API au chargement initial de la page afin de vérifier si l'utilisateur est déjà connecté ou non.
   useEffect(() => {
     axios.get('http://localhost:3001/me', {
-      withCredentials: true
+      withCredentials: true // Inclut les cookies dans la requête
     })
     .then(response => {
       setIsConnected(true);
@@ -22,19 +24,23 @@ const LoginPage = ({ setDisplayDeco }) => {
     .catch(error => {
       setIsConnected(false);
     });
-  }, []);
+  }, []); // Le tableau vide est nécessaire afin de préciser que ce code ne doit s'exécuter qu'une seule fois lors du chargement initial du composant
 
+  //Fonction pour permettre la modifiction de l'input email
   const handleChangeEmail = (e) => {
     setEmail(e.target.value);
   };
 
+  //Fonction pour permettre la modifiction de l'input mdp
   const handleChangePassword = (e) => {
     setPassword(e.target.value);
   };
 
+  // Définit une fonction pour gérer la soumission du formulaire de connexion
   const handleLogin = async (e) => {
     e.preventDefault();
 
+    //requête POST vers l'API pour tester la connexion avec les identitfiants fournis
     try {
       const response = await axios.post(
         'http://localhost:3001/login',
@@ -42,6 +48,7 @@ const LoginPage = ({ setDisplayDeco }) => {
         { withCredentials: true }
       );
 
+      //Affichage de messages d'erreur ou de succès en fonction du résultat de la requête.
       if (response.statusText === "OK") {
         setDisplayDeco(true);
         Swal.fire({
@@ -56,10 +63,10 @@ const LoginPage = ({ setDisplayDeco }) => {
           width: "350px"
         }).then((result) => {
           if (result.isConfirmed) {
-            window.location.href = '/game'
+            window.location.href = '/game' //Redirection de l'utilisateur vers la page du jeu une fois qu'il a validé la popup
           }
       });
-    }} catch (error) {
+    }} catch (error) { // gestion des erreurs s'il y a un problème lors de la connexion
       setError("La connexion a échoué");
       Swal.fire({
         title: "Erreur",
@@ -73,7 +80,7 @@ const LoginPage = ({ setDisplayDeco }) => {
     };
   }
 
-  if(!isConnected){
+  if(!isConnected){ // Vérifie si l'utilisateur n'est pas déjà connecté
     return (
       <div className="login-page">
   
