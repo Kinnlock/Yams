@@ -37,7 +37,6 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
             background: "#1B5959",
             color: "antiquewhite",
             confirmButtonColor: '#052E33',
-            confirmButtonTextColor: 'antiquewhite',
             cancelButtonColor: "#A3241A",
             confirmButtonText: "Je confirme",
             cancelButtonText: "Annuler",
@@ -55,7 +54,6 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
                         background: "#1B5959",
                         color: "antiquewhite",
                         confirmButtonColor: '#052E33',
-                        confirmButtonTextColor: 'antiquewhite',
                         width: "350px"
                     });
                 } catch (error) {
@@ -67,7 +65,6 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
                         background: "#1B5959",
                         color: "antiquewhite",
                         confirmButtonColor: '#052E33',
-                        confirmButtonTextColor: 'antiquewhite',
                     });
                 }
             }
@@ -113,7 +110,6 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
                 title: 'swal-title',
               },
             confirmButtonColor: '#052E33',
-            confirmButtonTextColor: 'antiquewhite',
             width: "350px"})
         } catch (error) {
           console.error("Erreur lors de l'appel API :", error);
@@ -163,7 +159,6 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
                     title: 'swal-title',
                 },
                 confirmButtonColor: '#052E33',
-                confirmButtonTextColor: 'antiquewhite',
                 confirmButtonText: 'Fermer cette fenêtre',
                 width: "400px"
             });

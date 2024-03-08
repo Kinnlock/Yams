@@ -25,7 +25,6 @@ function App() {
               color: "antiquewhite",
               showCancelButton: true,
               confirmButtonColor: "#052E33",
-              confirmButtonTextColor: 'antiquewhite',
               cancelButtonColor: "#A3241A",
               confirmButtonText: "Oui",
               width: "400px"
@@ -40,7 +39,6 @@ function App() {
                   color: "antiquewhite",
                   width: "250px",
                   confirmButtonColor: '#052E33',
-                  confirmButtonTextColor: 'antiquewhite',
                 }).then((result)=>{
                   if(result.isConfirmed){
                     window.location.href = '/'
