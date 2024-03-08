@@ -48,11 +48,11 @@ const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = u
           setRollCount(rollCount + 1);
         } else {
           Swal.fire({
-            title: "Vous avez déjà lancer les dés 3 fois",
+            title: "Vous avez déjà lancé les dés 3 fois",
             background: "#1B5959",
             color:"antiquewhite",
             icon: 'error',
-            width: "400px",
+            width: "350px",
             confirmButtonColor: '#052E33',
             confirmButtonTextColor: 'antiquewhite',
           })
