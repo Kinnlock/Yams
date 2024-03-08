@@ -175,6 +175,7 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
                 setPastries(response.data);
                 setDisplayDeco(true);
                 setIsConnected(true)
+                console.log(response.data);
             } catch (error) {
                 setIsConnected(false);
                 setShowError(true);
@@ -222,6 +223,7 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
                         <thead>
                             <tr>
                                 <th className="column-name">Nom</th>
+                                <th className="column-name">Photo</th>
                                 <th className="column-name">Quantité</th>
                                 <th className="column-name">Quantité gagnée</th>
                                 <th className="column-name">Action</th>
@@ -231,6 +233,7 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
                             {pastries.map(pastrie => (
                                 <tr key={pastrie.id}>
                                     <td>{pastrie.name}</td>
+                                    <td><img className="table-image" src={"http://localhost:3001/uploads/images/" + pastrie.image} alt={pastrie.name}/></td>
                                     <td>{pastrie.quantity}</td>
                                     <td>{pastrie.quantityWon}</td>
                                     <td><Button onClick={() => handleModifications(pastrie)}
