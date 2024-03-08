@@ -1,6 +1,6 @@
 import Button from './Button';
 
-const AddPastryForm = ({ newPastry, setNewPastry, handleSubmit, displayAdd, setDisplayAdd }) => {
+const AddPastryForm = ({ newPastry, setNewPastry, handleSubmit, displayAdd, setDisplayAdd, handleFileChange, handleUpload, files}) => {
     return (
         <div className='add-pastries'>
             <div className='inputs'>
@@ -28,7 +28,7 @@ const AddPastryForm = ({ newPastry, setNewPastry, handleSubmit, displayAdd, setD
                             required
                         ></input>
                     </div>
-                    <div className='input'>
+                    {files==null && (<div className='input'>
                         <label htmlFor='image'>URL de l'image</label>
                         <input
                             id='image'
@@ -36,8 +36,13 @@ const AddPastryForm = ({ newPastry, setNewPastry, handleSubmit, displayAdd, setD
                             value={newPastry.image}
                             onChange={(e) => setNewPastry({ ...newPastry, image: e.target.value })}
                         ></input>
-                    </div>
-                    <Button type="submit"
+                    </div>)}
+                    <input
+                        type="file" onChange={handleFileChange}
+                        accept="image/jpeg, image/jpg, image/png"
+                    />
+                    {files!=null && (<button  onClick={handleUpload}>Upload</button>)}
+                    {files==null && (<Button type="submit"
                         label="Envoyer"
                         width="80px"
                         height="30px"
@@ -45,7 +50,7 @@ const AddPastryForm = ({ newPastry, setNewPastry, handleSubmit, displayAdd, setD
                         backgroundColor="#052E33"
                         borderRadius="15px"
                         fontSize="0.8em"
-                        margin="15px" />
+                        margin="15px" />)}
                 </form>
             </div>
         </div>

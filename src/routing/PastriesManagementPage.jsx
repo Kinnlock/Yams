@@ -18,7 +18,8 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
     const [newPastry, setNewPastry] = useState({
         name: '',
         quantity: 1,
-        image: ''
+        image: '',
+        choise:'',
     });
     const [files, setFiles] = useState(null);
     const [showError, setShowError] = useState(false); // Nouvel état pour contrôler l'affichage de l'ErrorPage
@@ -98,7 +99,7 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
     const handleUpload = async () => {
         const formData = new FormData();
         formData.append('image', files);
-        formData.append('pastry', JSON.stringify({ name: "a", quantity: 1 }));
+        formData.append('pastry', JSON.stringify(newPastry));
         try {
           const res = await axios.post(`http://localhost:3001/api/pastry`, formData, {
             withCredentials: true,
@@ -107,7 +108,6 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
           console.log(res.data);
         } catch (error) {
           console.error("Erreur lors de l'appel API :", error);
-          // Gérer l'erreur côté client
         }
       };
 
@@ -193,11 +193,6 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
             return (
 
                 <div className="PastriesManagementPage">
-                    <input
-                        type="file" onChange={handleFileChange}
-                        accept="image/jpeg, image/jpg, image/png"
-                    />
-                    <button onClick={handleUpload}>Upload</button>
 
 
                     <div className="retour-button">
@@ -264,7 +259,7 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
                 </div>
             );
         } else if (displayAdd === true && currentPastry === undefined) {
-            return <AddPastryForm newPastry={newPastry} setNewPastry={setNewPastry} handleSubmit={handleSubmit} displayAdd={displayAdd} setDisplayAdd={setDisplayAdd}></AddPastryForm>
+            return <AddPastryForm newPastry={newPastry} setNewPastry={setNewPastry} handleSubmit={handleSubmit} displayAdd={displayAdd} setDisplayAdd={setDisplayAdd} handleFileChange={handleFileChange} handleUpload={handleUpload} files={files}></AddPastryForm>
         }
         else if (displayAdd === true && currentPastry) {
             return <ModifPastries currentPastry={currentPastry} setCurrentPastry={setCurrentPastry} modifHandleSubmit={modifHandleSubmit} displayAdd={displayAdd} setDisplayAdd={setDisplayAdd}></ModifPastries>
