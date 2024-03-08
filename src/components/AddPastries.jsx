@@ -51,15 +51,21 @@ const AddPastryForm = ({ newPastry, setNewPastry, handleSubmit, displayAdd, setD
                         fontSize="0.8em"
                         margin="15px" />)}
                 </form>
-                    {files!=null && (<Button label="Envoyer"
-                        onClick={()=> handleUpload}
-                        width="80px"
-                        height="30px"
-                        color="antiquewhite"
-                        backgroundColor="#052E33"
-                        borderRadius="15px"
-                        fontSize="0.8em"
-                        margin="15px" />)}
+                {files != null && (
+                <Button
+                    label="Envoyer"
+                    onClick={() => {
+                        handleUpload(); 
+                    }}
+                    width="80px"
+                    height="30px"
+                    color="antiquewhite"
+                    backgroundColor="#052E33"
+                    borderRadius="15px"
+                    fontSize="0.8em"
+                    margin="15px"
+                />
+            )}
             </div>
         </div>
     );

@@ -34,11 +34,6 @@ const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = u
     return <div>Erreur lors du chargement: {pastriesError.message}</div>;
   }
 
-  if (pastries) {
-    const handleClick = () => {
-      const newResultat = result(); 
-      setResultat(newResultat); 
-    };
 
     if (pastries) {
       const handleClick = () => {
@@ -161,7 +156,6 @@ const { data: pastries, error: pastriesError, isLoading: pastriesIsLoading } = u
       </>
     );
   }
-}
 
 function result() {
   let resultats = [];
