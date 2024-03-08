@@ -1,3 +1,4 @@
+//import
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import "../css/PastriesManagementPage.css";
@@ -9,6 +10,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import { Link } from 'react-router-dom';
 import ErrorPage from '../components/ErrorPage';
 
+//Création des states
 const PastriesManagementPage = ({ setDisplayDeco }) => {
     const [pastries, setPastries] = useState([]);
     const [error, setError] = useState(null);
@@ -22,12 +24,13 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
         choise:'',
     });
     const [files, setFiles] = useState(null);
-    const [showError, setShowError] = useState(false); // Nouvel état pour contrôler l'affichage de l'ErrorPage
+    const [showError, setShowError] = useState(false); 
 
     const handleFileChange = (e) => {
         setFiles(e.target.files[0])
     }
 
+    //Fonction qui requete l'api pour delete une pastries selctionné. Elle met à jour en suivant la nouvelle liste de pastries
     const deletePastry = (id) => {
         Swal.fire({
             title: "Attention !",
@@ -57,7 +60,7 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
                         width: "350px"
                     });
                 } catch (error) {
-                    console.error('Error delete pastry:', error);
+                    setError(error)
                     Swal.fire({
                         title: "Erreur",
                         text: "Une erreur est survenue lors de la suppression de la pâtisserie",
@@ -71,6 +74,7 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
         });
     };
 
+    //Fonction qui requete l'api pour modifié une pastries selectionner, elle à jour l'etat de pastries en suivant 
     const modifHandleSubmit = async () => {
         try {
             let id = currentPastry.id
@@ -85,12 +89,14 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
 
             const updatedResponse = await axios.get('http://localhost:3001/api/pastries', { withCredentials: true });
             setPastries(updatedResponse.data);
+            setCurrentPastry(undefined)
         }
         catch (error) {
             console.error('Error adding pastry:', error);
         }
     }
 
+    //Fonction qui ajoute une pastries avec image, elle met à jour en suivant l'état de pastries
     const handleUpload = async () => {
         const formData = new FormData();
         formData.append('image', files);
@@ -117,6 +123,7 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
         }
       };
 
+    //Fonction qui requete l'api pour ajouté une patisserie sans image mais un url d'image, elle met à jour en suivant la patisserie
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -167,17 +174,14 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
         }
     };
 
+    //Fonction qui quand on clic sur modifié, met les données de la pastry selectionner dans currentPastry afin de modifier currentPastry dans le component modifPastries
     const handleModifications = (pastry) => {
         setCurrentPastry(pastry);
         setDisplayAdd(!displayAdd);
     }
 
-    function isValidURL(url) {
-        var img = new Image();
-        img.src = url;
-        return img.complete && img.naturalHeight !== 0;
-    }
-
+    //Fonction qui récupère toutes les pastries afin de les afficher dans le tableau lors du montage de la page dans le Dom (useEffect)
+    //si il y a une erreur dans la récupération de la page alors on setShowError à true pour afficher la page d'erreur
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -187,16 +191,19 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
                 setIsConnected(true)
             } catch (error) {
                 setIsConnected(false);
+                setError(error)
                 setShowError(true);
             }
         };
         fetchData();
     }, []);
 
+    //Permet de créer la page d'erreur si l'ont est pas connecté
     if (showError) {
         return <ErrorPage message={"401 Interdit"}></ErrorPage>;
     }
 
+    //vérifie si la personne est toujours connecté pour afficher ensuite la page le DOM
     if (isConnected) {
         if (displayAdd === false) {
             return (
@@ -220,6 +227,7 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
                     </div>
 
                     <h1 className="title">Gestion du stock</h1>
+                    {/*  Le bouton gère le state de displayAdd qui est un booléen qui permet de gérer l'état de la page, s'il est true alors on affiche soit ajouté soit affiché*/}
                     <button className='ajout-btn btn' onClick={() => setDisplayAdd(!displayAdd)}>Ajouter une patisserie</button>
                     {error && <p className="error">An error occurred: {error.message}</p>}
 
@@ -268,6 +276,7 @@ const PastriesManagementPage = ({ setDisplayDeco }) => {
                     </table>
                 </div>
             );
+        //Si displayAdd est true mais qu'on a pas de currentPastry alors on ajoute. sinon on modifie
         } else if (displayAdd === true && currentPastry === undefined) {
             return <AddPastryForm newPastry={newPastry} setNewPastry={setNewPastry} handleSubmit={handleSubmit} displayAdd={displayAdd} setDisplayAdd={setDisplayAdd} handleFileChange={handleFileChange} handleUpload={handleUpload} files={files}></AddPastryForm>
         }
